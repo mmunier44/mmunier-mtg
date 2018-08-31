@@ -9,6 +9,12 @@ const getCards = function () {
   })
 }
 
+// const getCards = function () {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards'
+//   })
+// }
+
 const deleteCards = (cardId) => {
   return $.ajax({
     url: config.apiUrl + '/cards/' + cardId,
@@ -102,18 +108,15 @@ const listCards = function (id) {
 //   })
 // }
 
-const updateCard = (index, value, over) => {
+const updateCard = (data, event) => {
   // console.log('updatemovedata', data)
   return $.ajax({
     url: config.apiUrl + '/cards/' + store.card.id,
     method: 'PATCH',
     data: {
       'card': {
-        'cell': {
-          // 'index': `${index}`,
-          // 'value': `${value}`,
-          // 'over': `${over}`
-        }
+        'name': `${NAME}`,
+        'description': `${DESCRIPTION}`
       }
     },
     headers: {
@@ -139,6 +142,12 @@ const showAllCards = () => {
   return $.ajax({
     url: config.apiUrl + '/cards',
     method: 'GET',
+    data: {
+      'card': {
+        'name': `${NAME}`,
+        'description': `${DESCRIPTION}`
+      }
+    },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
