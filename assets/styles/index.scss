@@ -1,1 +1,15 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+// @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import '~bootstrap/scss/bootstrap';
+
+$black: #000;
+$red: rgb(240, 128, 128);
+
+.footer {
+  background-color: $red;
+  bottom: 0;
+  color: $black;
+  position: fixed;
+  text-align: center;
+  width: 100%;
+}
