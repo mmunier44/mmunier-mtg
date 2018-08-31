@@ -78,7 +78,7 @@ const signOut = function () {
 }
 
 const listCards = function (id) {
-  // console.log('games list create')
+  // console.log('cards list create')
   // console.log(id)
   return $.ajax({
     method: 'GET',
@@ -95,8 +95,7 @@ const listCards = function (id) {
 //     url: config.apiUrl + '/cards',
 //     method: 'POST',
 //     data: {
-//       'card': {
-//     },
+//
 //     headers: {
 //       Authorization: 'Token token=' + store.user.token
 //     }
@@ -106,7 +105,7 @@ const listCards = function (id) {
 const updateCard = (index, value, over) => {
   // console.log('updatemovedata', data)
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.card.id,
+    url: config.apiUrl + '/cards/' + store.card.id,
     method: 'PATCH',
     data: {
       'card': {
@@ -125,7 +124,7 @@ const updateCard = (index, value, over) => {
 
 const showCard = (data) => {
   return $.ajax({
-    url: config.apiUrl + '/games' + store.user.cards.id,
+    url: config.apiUrl + '/cards' + store.user.cards.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token,

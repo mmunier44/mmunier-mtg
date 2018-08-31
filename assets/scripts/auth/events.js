@@ -126,7 +126,8 @@ const onDeleteCard = (event) => {
 const addHandlers = () => {
   $('#getCardsButton').on('click', onGetCards)
   $('#clearCardsButton').on('click', onClearCards)
-  $('.content').on('click', 'button', onDeleteCard)
+  $('#createCardButton').on('click', onNewCard)
+  // $('.content').on('click', 'button', onDeleteCard)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
@@ -147,7 +148,8 @@ module.exports = {
   onShowCard,
   onListCards,
   onSignOut,
-  onPasswordChange
+  onPasswordChange,
+  onDeleteCard
 }
 
 // const onGetBooks = (event) => {

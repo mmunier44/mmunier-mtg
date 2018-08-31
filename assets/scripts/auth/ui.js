@@ -60,7 +60,7 @@ const passwordChangeSuccess = (response) => {
   $('#message').text('Successful Password Change')
   $('#message').removeClass()
   $('#message').addClass('success')
-  $('#sign-in input').val('')
+  $('#change-password input').val('')
   $('#change-password').addClass('hide')
 }
 
@@ -68,7 +68,7 @@ const passwordChangeFail = function () {
   $('#message').text('Password Change Failed')
   $('#message').removeClass()
   $('#message').addClass('fail')
-  $('#sign-in input').val('')
+  $('#change-password input').val('')
 }
 
 const signOutSuccess = (response) => {
