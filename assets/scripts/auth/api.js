@@ -3,19 +3,18 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const getBooks = function () {
+const getCards = function () {
   return $.ajax({
-    url: config.apiUrl + '/books'
+    url: config.apiUrl + '/cards'
   })
 }
 
-const deleteBook = (bookId) => {
+const deleteCards = (cardId) => {
   return $.ajax({
-    url: config.apiUrl + '/books/' + bookId,
+    url: config.apiUrl + '/cards/' + cardId,
     method: 'DELETE'
   })
 }
-
 
 const apiIndex = function () {
   // console.log('api index')
@@ -24,7 +23,7 @@ const apiIndex = function () {
     headers: {
       'Authorization': 'Token token=' + store.user.token
     },
-    url: config.apiUrl + 'games'
+    url: config.apiUrl + 'cards'
   })
 }
 
@@ -78,7 +77,7 @@ const signOut = function () {
   })
 }
 
-const listGames = function (id) {
+const listCards = function (id) {
   // console.log('games list create')
   // console.log(id)
   return $.ajax({
@@ -86,28 +85,31 @@ const listGames = function (id) {
     headers: {
       'Authorization': 'Token token=' + store.user.token
     },
-    url: config.apiUrl + 'games/' + id
+    url: config.apiUrl + 'cards/' + id
   })
 }
 
-const newGame = () => {
-  return $.ajax({
-    url: config.apiUrl + '/games',
-    method: 'POST',
-    data: {},
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// note here new card start
+// const newCard = () => {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards',
+//     method: 'POST',
+//     data: {
+//       'card': {
+//     },
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
-const updateMove = (index, value, over) => {
+const updateCard = (index, value, over) => {
   // console.log('updatemovedata', data)
   return $.ajax({
-    url: config.apiUrl + '/games/' + store.game.id,
+    url: config.apiUrl + '/games/' + store.card.id,
     method: 'PATCH',
     data: {
-      'game': {
+      'card': {
         'cell': {
           // 'index': `${index}`,
           // 'value': `${value}`,
@@ -121,9 +123,9 @@ const updateMove = (index, value, over) => {
   })
 }
 
-const showGame = (data) => {
+const showCard = (data) => {
   return $.ajax({
-    url: config.apiUrl + '/games' + store.user.games.id,
+    url: config.apiUrl + '/games' + store.user.cards.id,
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token,
@@ -131,10 +133,12 @@ const showGame = (data) => {
     }
   })
 }
+// note here start adjusting store.user.cards.id
+// note check card cards
 
-const showAllGames = () => {
+const showAllCards = () => {
   return $.ajax({
-    url: config.apiUrl + '/games',
+    url: config.apiUrl + '/cards',
     method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
@@ -143,5 +147,16 @@ const showAllGames = () => {
 }
 
 module.exports = {
-
+  getCards,
+  deleteCards,
+  apiIndex,
+  signUp,
+  signIn,
+  signOut,
+  passwordChange,
+  listCards,
+  // newCard,
+  updateCard,
+  showCard,
+  showAllCards
 }
