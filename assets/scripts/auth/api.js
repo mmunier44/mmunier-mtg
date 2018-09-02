@@ -85,17 +85,16 @@ const apiIndex = function () {
   //   console.log(data)
 }
 
-const listCards = function (id) {
-  // console.log('cards list create')
-  // console.log(id)
-  return $.ajax({
-    method: 'GET',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    url: config.apiUrl + 'cards/' + id
-  })
-}
+// const showCard = (id) => {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards/' + id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//     // data: data
+//   })
+// }
 
 // note here new card start
 const newCard = (data) => {
@@ -104,37 +103,27 @@ const newCard = (data) => {
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    }
-    // data
-  })
-}
-
-const updateCard = (data, event) => {
-  // console.log('updatemovedata', data)
-  return $.ajax({
-    url: config.apiUrl + '/cards/' + store.card.id,
-    method: 'PATCH',
-    data: {
-      'card': {
-        'name': `${NAME}`,
-        'description': `${DESCRIPTION}`
-      }
     },
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
+    data
   })
 }
 
-const showCard = () => {
-  return $.ajax({
-    url: config.apiUrl + '/cards',
-    method: 'GET',
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
+// const updateCard = (data, event) => {
+//   // console.log('updatemovedata', data)
+//   return $.ajax({
+//     url: config.apiUrl + '/cards/' + store.card.id,
+//     method: 'PATCH',
+//     data: {
+//       'card': {
+//         'name': `${NAME}`,
+//         'description': `${DESCRIPTION}`
+//       }
+//     },
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
 
 // const showCard = (data) => {
 //   return $.ajax({
@@ -150,33 +139,33 @@ const showCard = () => {
 // note here start adjusting store.user.cards.id
 // note check card cards
 
-const showAllCards = () => {
-  return $.ajax({
-    url: config.apiUrl + '/cards',
-    method: 'GET',
-    data: {
-    },
-    headers: {
-      Authorization: 'Token token=' + store.user.token
-    }
-  })
-}
-
 // const showAllCards = () => {
 //   return $.ajax({
 //     url: config.apiUrl + '/cards',
 //     method: 'GET',
 //     data: {
-//       'card': {
-//         'name': `${NAME}`,
-//         'description': `${DESCRIPTION}`
-//       }
 //     },
 //     headers: {
 //       Authorization: 'Token token=' + store.user.token
 //     }
 //   })
 // }
+//
+// // const showAllCards = () => {
+// //   return $.ajax({
+// //     url: config.apiUrl + '/cards',
+// //     method: 'GET',
+// //     data: {
+// //       'card': {
+// //         'name': `${NAME}`,
+// //         'description': `${DESCRIPTION}`
+// //       }
+// //     },
+// //     headers: {
+// //       Authorization: 'Token token=' + store.user.token
+// //     }
+// //   })
+// // }
 
 module.exports = {
   // getCards,
@@ -186,9 +175,9 @@ module.exports = {
   signIn,
   signOut,
   passwordChange,
-  listCards,
-  newCard,
-  updateCard,
-  showCard,
-  showAllCards
+  // listCards,
+  newCard
+  // updateCard,
+  // showCard
+  // showAllCards
 }

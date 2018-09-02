@@ -45,6 +45,8 @@ const signInSuccess = (response) => {
   $('#sign-in').addClass('hide')
   $('#new-card').removeClass('hide')
   $('#list-cards').removeClass('hide')
+  console.log('store.user', store.user)
+  // console.log('data.user', data.user)
 }
 
 const signInFail = function () {
@@ -105,21 +107,38 @@ const apiIndexFail = (response) => {
   console.log('apiIndexFail ran')
 }
 
-const listCardsSuccess = (response) => {
-  $('#message').text('List Cards Success')
+const showCardSuccess = (response) => {
+  $('#message').text('Show Card Success')
   $('#message').removeClass()
   $('#message').addClass('success')
-  $('#list-cards input').val('')
-  // console.log('listCardsSuccess ran')
+  $('#show-cards input').val('')
+  // console.log(data)
+  // console.log('showCardSuccess ran')
 }
 
-const listCardsFail = (response) => {
-  $('#message').text('List Card Fail')
+const showCardFail = (response) => {
+  $('#message').text('Show Cards Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
-  $('#list-cards input').val('')
-  console.log('listCardsFail ran')
+  $('#show-cards input').val('')
+  // console.log('showCardFail ran')
 }
+
+// const listCardsSuccess = (response) => {
+//   $('#message').text('List Cards Success')
+//   $('#message').removeClass()
+//   $('#message').addClass('success')
+//   $('#list-cards input').val('')
+//   // console.log('listCardsSuccess ran')
+// }
+//
+// const listCardsFail = (response) => {
+//   $('#message').text('List Card Fail')
+//   $('#message').removeClass()
+//   $('#message').addClass('fail')
+//   $('#list-cards input').val('')
+//   console.log('listCardsFail ran')
+// }
 
 const clearBooks = () => {
   console.log(event)
@@ -130,21 +149,21 @@ const failure = (error) => {
   console.error(error)
 }
 
-const createCardSuccess = (data) => {
-  console.log('Card ID: ', data.card.id)
-  store.card = data.card
-  $('table').removeClass('hide')
-  console.log('store', store)
-  console.log('data.card.id', data.card.id)
-  console.log('newstorecard', store.card)
-  console.log('newdatacard', data.card)
-  $('#message').text('Create Card Success')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  $('#create-cards input').val('')
-  console.log('createCardSuccess ran')
-  $('#change-password').addClass('hide')
-}
+// const createCardSuccess = (data) => {
+//   console.log('Card ID: ', data.card.id)
+//   store.cardId = data.cardId
+//   $('table').removeClass('hide')
+//   console.log('store', store)
+//   console.log('data.card.id', data.card.id)
+//   console.log('newstorecard', store.card)
+//   console.log('newdatacard', data.card)
+//   $('#message').text('Create Card Success')
+//   $('#message').removeClass()
+//   $('#message').addClass('success')
+//   $('#create-cards input').val('')
+//   console.log('createCardSuccess ran')
+//   $('#change-password').addClass('hide')
+// }
 
 const newCardSuccess = (data) => {
   console.log('cardid', data.card.id)
@@ -184,37 +203,21 @@ const updateCardFail = (response) => {
   // console.log('createCardFail ran')
 }
 
-const showCardSuccess = (response) => {
-  $('#message').text('Show Card Success')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-  $('#show-cards input').val('')
-  // console.log('showCardSuccess ran')
-}
-
-const showCardFail = (response) => {
-  $('#message').text('Show Cards Fail')
-  $('#message').removeClass()
-  $('#message').addClass('fail')
-  $('#show-cards input').val('')
-  // console.log('showCardFail ran')
-}
-
-const joinCardSuccess = (response) => {
-  $('#message').text('Join Card Success')
-  $('#message').removeClass()
-  $('#message').addClass('fail')
-  $('#join-cards input').val('')
-  // console.log('joinCardSuccess ran')
-}
-
-const joinCardFail = (response) => {
-  $('#message').text('Join Card Fail')
-  $('#message').removeClass()
-  $('#message').addClass('fail')
-  $('#join-cards input').val('')
-  // console.log('joinCardFail ran')
-}
+// const joinCardSuccess = (response) => {
+//   $('#message').text('Join Card Success')
+//   $('#message').removeClass()
+//   $('#message').addClass('fail')
+//   $('#join-cards input').val('')
+//   // console.log('joinCardSuccess ran')
+// }
+//
+// const joinCardFail = (response) => {
+//   $('#message').text('Join Card Fail')
+//   $('#message').removeClass()
+//   $('#message').addClass('fail')
+//   $('#join-cards input').val('')
+//   // console.log('joinCardFail ran')
+// }
 
 const updateCard = (data) => {
   console.log('store.card', store.card)
@@ -236,17 +239,17 @@ module.exports = {
   passwordChangeFail,
   signOutSuccess,
   signOutFail,
-  listCardsSuccess,
-  listCardsFail,
+  // listCardsSuccess,
+  // listCardsFail,
   updateCardSuccess,
   updateCardFail,
   updateCard,
-  joinCardSuccess,
-  joinCardFail,
+  // joinCardSuccess,
+  // joinCardFail,
   showCardSuccess,
   showCardFail,
   newCardFail,
   createCardFail,
-  createCardSuccess,
+  // createCardSuccess,
   newCardSuccess
 }
