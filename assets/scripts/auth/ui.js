@@ -3,29 +3,20 @@
 // const config = require('../config.js')
 const store = require('../store.js')
 
-const showBooksTemplate =
-require('../templates/book-listing.handlebars')
+// const showBooksTemplate =
+// require('../templates/book-listing.handlebars')
 // const showCardsTemplate =
 // require('../templates/card-listing.handlebars')
 
-const getBooksSuccess = (data) => {
-  const showBooksHtml = showBooksTemplate({ books: data.books })
-  $('.content').append(showBooksHtml)
-}
+// const getBooksSuccess = (data) => {
+//   const showBooksHtml = showBooksTemplate({ books: data.books })
+//   $('.content').append(showBooksHtml)
+// }
 
 // const getCardsSuccess = (data) => {
 //   const showCardsHtml = showCardsTemplate({ cards: data.cards })
 //   $('.content').append(showCardsHtml)
 // }
-
-const clearBooks = () => {
-  console.log(event)
-  $('.content').empty()
-}
-
-const failure = (error) => {
-  console.error(error)
-}
 
 const signUpSuccess = (data) => {
   $('#message').text('Successful Signup')
@@ -98,6 +89,22 @@ const signOutFail = (response) => {
   // console.log('signoutFail ran')
 }
 
+const apiIndexSuccess = (response) => {
+  $('#message').text('List Cards Success')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  console.log('listCardsSuccess ran')
+  // const showCardsHtml = showCardsTemplate({ cards: data.cards })
+  $('.content').append(content)
+}
+
+const apiIndexFail = (response) => {
+  $('#message').text('List Card Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  console.log('listCardsFail ran')
+}
+
 const listCardsSuccess = (response) => {
   $('#message').text('List Cards Success')
   $('#message').removeClass()
@@ -112,6 +119,15 @@ const listCardsFail = (response) => {
   $('#message').addClass('fail')
   $('#list-cards input').val('')
   console.log('listCardsFail ran')
+}
+
+const clearBooks = () => {
+  console.log(event)
+  $('.content').empty()
+}
+
+const failure = (error) => {
+  console.error(error)
 }
 
 const createCardSuccess = (data) => {
@@ -207,7 +223,9 @@ const updateCard = (data) => {
 module.exports = {
   // deleteBookSuccess,
   // getCardsSuccess,
-  getBooksSuccess,
+  // getBooksSuccess,
+  apiIndexSuccess,
+  apiIndexFail,
   clearBooks,
   failure,
   signUpSuccess,

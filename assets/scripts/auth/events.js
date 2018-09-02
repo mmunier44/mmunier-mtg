@@ -41,15 +41,15 @@ const onSignOut = function (event) {
     .catch(ui.signOutFail)
 }
 
-const onListCards = function (event) {
-  $('#message').text('Cards List Loaded')
+const onApiIndex = function (event) {
+  $('#message').text('Cards List Api Pinged')
   event.preventDefault()
-  console.log('Cards Shown')
+  console.log('event', event)
   // const data = getFormFields(event.target)
 
-  api.listCards()
-    .then(ui.listCardsSuccess)
-    .catch(ui.listCardsFail)
+  api.apiIndex()
+    .then(ui.apiIndexSuccess)
+    .catch(ui.apiIndexFail)
 }
 
 const onShowCard = function (event) {
@@ -101,6 +101,7 @@ const onSignIn = function (event) {
   console.log('data.card', data)
   console.log('data.card.', data.card)
   console.log('store', store)
+  data.card = store.card
   // console.log('sign in data', data)
 
   api.signIn(data)
@@ -119,7 +120,7 @@ const onNewCard = function (event) {
   $('table').removeClass('hide')
   console.log('newcardworking?')
   const data = getFormFields(event.target)
-  data.card.id = store.card.id
+  // data.card.id = store.card.id
   // console.log('check data', data)
   $('#message').text('New Card!')
   api.newCard(data)
@@ -144,14 +145,15 @@ const onDeleteCard = (event) => {
 
 const addHandlers = () => {
   $('#getCardsButton').on('click', onGetCards)
+  $('#show-card').on('click', onGetCards)
   $('#clearCardsButton').on('click', onClearCards)
-  $('#createCardButton').on('click', onNewCard)
+  $('#create-card').on('click', onNewCard)
   // $('.content').on('click', 'button', onDeleteCard)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
   $('#sign-out').on('submit', onSignOut)
-  $('#list-cards').on('submit', onListCards)
+  // $('#list-cards').on('submit', onListCards)
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onShowCard)
   // $('.cell').on('click,onGameboard')
@@ -159,13 +161,14 @@ const addHandlers = () => {
 }
 
 module.exports = {
+  onApiIndex,
   addHandlers,
   onSignUp,
   onSignIn,
   onNewCard,
   onUpdateCard,
   onShowCard,
-  onListCards,
+  // onListCards,
   onSignOut,
   onPasswordChange,
   onDeleteCard

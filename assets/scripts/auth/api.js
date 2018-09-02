@@ -23,7 +23,7 @@ const deleteCards = (cardId) => {
 }
 
 const apiIndex = function () {
-  // console.log('api index')
+  console.log('api index')
   return $.ajax({
     method: 'GET',
     headers: {
@@ -102,8 +102,8 @@ const newCard = (data) => {
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data
+    }
+    // data
   })
 }
 
@@ -176,7 +176,6 @@ const showAllCards = () => {
 //   })
 // }
 
-
 module.exports = {
   getCards,
   deleteCards,
@@ -186,7 +185,7 @@ module.exports = {
   signOut,
   passwordChange,
   listCards,
-  // newCard,
+  newCard,
   updateCard,
   showCard,
   showAllCards
