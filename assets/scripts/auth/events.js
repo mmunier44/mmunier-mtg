@@ -19,6 +19,22 @@ const onSignUp = function (event) {
     .catch(ui.signUpFail)
 }
 
+const onSignIn = function (event) {
+  $('#message').text('Sign In Successful')
+  event.preventDefault()
+  // console.log('signed in')
+  const data = getFormFields(event.target)
+  console.log('data.card', data)
+  console.log('data.card.', data.card)
+  console.log('store', store)
+  data.card = store.card
+  // console.log('sign in data', data)
+
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFail)
+}
+
 const onPasswordChange = function (event) {
   $('#message').text('Password Changed')
   event.preventDefault()
@@ -93,21 +109,6 @@ const onUpdateCard = (event) => {
 //     .catch(ui.updateMoveFail)
 // }
 
-const onSignIn = function (event) {
-  $('#message').text('Sign In Successful')
-  event.preventDefault()
-  // console.log('signed in')
-  const data = getFormFields(event.target)
-  console.log('data.card', data)
-  console.log('data.card.', data.card)
-  console.log('store', store)
-  data.card = store.card
-  // console.log('sign in data', data)
-
-  api.signIn(data)
-    .then(ui.signInSuccess)
-    .catch(ui.signInFail)
-}
 
 const onGetCards = (event) => {
   event.preventDefault()
@@ -146,6 +147,7 @@ const onDeleteCard = (event) => {
 const addHandlers = () => {
   $('#getCardsButton').on('click', onGetCards)
   $('#show-card').on('click', onGetCards)
+  $('#api-index').on('click', onApiIndex)
   $('#clearCardsButton').on('click', onClearCards)
   $('#create-card').on('click', onNewCard)
   // $('.content').on('click', 'button', onDeleteCard)

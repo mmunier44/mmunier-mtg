@@ -3,35 +3,24 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-const getCards = function () {
-  return $.ajax({
-    url: config.apiUrl + '/cards'
-  })
-}
-
 // const getCards = function () {
 //   return $.ajax({
 //     url: config.apiUrl + '/cards'
 //   })
 // }
-
-const deleteCards = (cardId) => {
-  return $.ajax({
-    url: config.apiUrl + '/cards/' + cardId,
-    method: 'DELETE'
-  })
-}
-
-const apiIndex = function () {
-  console.log('api index')
-  return $.ajax({
-    method: 'GET',
-    headers: {
-      'Authorization': 'Token token=' + store.user.token
-    },
-    url: config.apiUrl + 'cards'
-  })
-}
+//
+// // const getCards = function () {
+// //   return $.ajax({
+// //     url: config.apiUrl + '/cards'
+// //   })
+// // }
+//
+// const deleteCards = (cardId) => {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards/' + cardId,
+//     method: 'DELETE'
+//   })
+// }
 
 const signUp = function (data, event) {
   // console.log('api URL is', config.apiUrl)
@@ -81,6 +70,19 @@ const signOut = function () {
     }
     // data: data
   })
+}
+
+const apiIndex = function () {
+  console.log('api index')
+  return $.ajax({
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    url: config.apiUrl + '/cards'
+  })
+  // .done(function (data) {
+  //   console.log(data)
 }
 
 const listCards = function (id) {
@@ -177,8 +179,8 @@ const showAllCards = () => {
 // }
 
 module.exports = {
-  getCards,
-  deleteCards,
+  // getCards,
+  // deleteCards,
   apiIndex,
   signUp,
   signIn,

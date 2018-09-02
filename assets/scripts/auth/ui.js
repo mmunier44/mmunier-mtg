@@ -90,19 +90,19 @@ const signOutFail = (response) => {
 }
 
 const apiIndexSuccess = (response) => {
-  $('#message').text('List Cards Success')
+  $('#message').text('Api Index Success')
   $('#message').removeClass()
   $('#message').addClass('success')
-  console.log('listCardsSuccess ran')
+  console.log('apiIndexSuccess ran')
   // const showCardsHtml = showCardsTemplate({ cards: data.cards })
-  $('.content').append(content)
+  // $('.content').append(content)
 }
 
 const apiIndexFail = (response) => {
-  $('#message').text('List Card Fail')
+  $('#message').text('Api Index Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
-  console.log('listCardsFail ran')
+  console.log('apiIndexFail ran')
 }
 
 const listCardsSuccess = (response) => {
