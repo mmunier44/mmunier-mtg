@@ -65,7 +65,7 @@ const onShowCard = function (event) {
     .catch(ui.showCardFail)
 }
 
-const onUpdateMove = (event) => {
+const onUpdateCard = (event) => {
   event.preventDefault()
   console.log('event logged', event)
   const data = getFormFields(event.target)
@@ -79,21 +79,28 @@ const onUpdateMove = (event) => {
     .catch(ui.updateMoveFail)
 }
 
-const onNewCard = function (data, event) {
-  $('table').removeClass('hide')
-  console.log('newcardworking?')
-  // console.log('check data', data)
-  $('#message').text('New Card!')
-  api.newCard(event)
-    .then(ui.newCardSuccess)
-    .catch(ui.newCardFail)
-}
+// const onUpdateMove = (event) => {
+//   event.preventDefault()
+//   console.log('event logged', event)
+//   const data = getFormFields(event.target)
+//   console.log('store.card.id', store.card.id)
+//   console.log('store check', store)
+//   console.log('data check', data)
+//   console.log('data.card', data.card)
+//   console.log(data)
+//   api.updateMove(data)
+//     .then(ui.updateMoveSuccess)
+//     .catch(ui.updateMoveFail)
+// }
 
 const onSignIn = function (event) {
   $('#message').text('Sign In Successful')
   event.preventDefault()
   // console.log('signed in')
   const data = getFormFields(event.target)
+  console.log('data.card', data)
+  console.log('data.card.', data.card)
+  console.log('store', store)
   // console.log('sign in data', data)
 
   api.signIn(data)
@@ -106,6 +113,18 @@ const onGetCards = (event) => {
   api.getCards()
     .then(ui.getCardsSuccess)
     .catch(ui.failure)
+}
+
+const onNewCard = function (event) {
+  $('table').removeClass('hide')
+  console.log('newcardworking?')
+  const data = getFormFields(event.target)
+  data.card.id = store.card.id
+  // console.log('check data', data)
+  $('#message').text('New Card!')
+  api.newCard(data)
+    .then(ui.newCardSuccess)
+    .catch(ui.newCardFail)
 }
 
 const onClearCards = (event) => {
@@ -132,11 +151,11 @@ const addHandlers = () => {
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
   $('#sign-out').on('submit', onSignOut)
-  $('#list-games').on('submit', onListCards)
-  $('#create-game').on('submit', onNewCard)
-  $('#show-game').on('submit', onShowCard)
+  $('#list-cards').on('submit', onListCards)
+  $('#create-card').on('submit', onNewCard)
+  $('#show-card').on('submit', onShowCard)
   // $('.cell').on('click,onGameboard')
-  $('#new-game').on('click', onNewCard)
+  // $('#new-game').on('click', onNewCard)
 }
 
 module.exports = {
@@ -144,7 +163,7 @@ module.exports = {
   onSignUp,
   onSignIn,
   onNewCard,
-  onUpdateMove,
+  onUpdateCard,
   onShowCard,
   onListCards,
   onSignOut,

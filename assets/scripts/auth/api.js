@@ -96,17 +96,16 @@ const listCards = function (id) {
 }
 
 // note here new card start
-// const newCard = () => {
-//   return $.ajax({
-//     url: config.apiUrl + '/cards',
-//     method: 'POST',
-//     data: {
-//
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const newCard = (data) => {
+  return $.ajax({
+    url: config.apiUrl + '/cards',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data
+  })
+}
 
 const updateCard = (data, event) => {
   // console.log('updatemovedata', data)
@@ -125,16 +124,27 @@ const updateCard = (data, event) => {
   })
 }
 
-const showCard = (data) => {
+const showCard = () => {
   return $.ajax({
-    url: config.apiUrl + '/cards' + store.user.cards.id,
+    url: config.apiUrl + '/cards',
     method: 'GET',
     headers: {
-      Authorization: 'Token token=' + store.user.token,
-      data
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
+
+// const showCard = (data) => {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards' + store.user.cards.id,
+//     method: 'GET',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token,
+//       data
+//     }
+//   })
+// }
+
 // note here start adjusting store.user.cards.id
 // note check card cards
 
@@ -143,16 +153,29 @@ const showAllCards = () => {
     url: config.apiUrl + '/cards',
     method: 'GET',
     data: {
-      'card': {
-        'name': `${NAME}`,
-        'description': `${DESCRIPTION}`
-      }
     },
     headers: {
       Authorization: 'Token token=' + store.user.token
     }
   })
 }
+
+// const showAllCards = () => {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards',
+//     method: 'GET',
+//     data: {
+//       'card': {
+//         'name': `${NAME}`,
+//         'description': `${DESCRIPTION}`
+//       }
+//     },
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
+
 
 module.exports = {
   getCards,
