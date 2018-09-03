@@ -214,7 +214,7 @@ const updateCardSuccess = (response) => {
 
 const updateCardFail = () => {
   let html = '<ul>'
-  html += '<li> Card does not exist. </li>'
+  html += '<li> Card does not exist, or you did not create the card </li>'
   html += '</ul>'
   $('#content').html(html)
   $('#update-card input').val('')
@@ -241,7 +241,7 @@ const deleteCardSuccess = (response) => {
 const deleteCardFail = (response) => {
   console.log(response)
   let html = '<ul>'
-  html += '<li> Card did not exist </li>'
+  html += '<li> Card did not exist or you did not create the card </li>'
   html += '</ul>'
   $('#content').html(html)
   $('#delete-card input').val('')

@@ -84,10 +84,13 @@ const onShowCard = function (event) {
     .catch(ui.showCardFail)
 }
 
-const onNewCard = function (event) {
-  $('table').removeClass('hide')
+const onNewCard = (event) => {
+  // $('table').removeClass('hide')
   console.log('newcardworking?')
   const data = getFormFields(event.target)
+  // const card = getFormFields(event.target)
+  // const cardId = getFormFields(event.target)
+  console.log(data)
   // data.card.id = store.card.id
   // console.log('check data', data)
   $('#message').text('New Card!')
@@ -102,7 +105,7 @@ const onUpdateCard = (event) => {
   event.preventDefault()
   console.log('event logged', event)
   const data = getFormFields(event.target)
-  console.log('store.card.id', store.card.id)
+  console.log('store.card.id', store.cardId)
   console.log('store check', store)
   console.log('data check', data)
   console.log('data.card', data.card)
@@ -145,17 +148,17 @@ const onDeleteCard = (event) => {
 //     .catch(ui.failure)
 // }
 
-const onClearCards = (event) => {
-  event.preventDefault()
-  ui.clearBooks()
-}
+// const onClearCards = (event) => {
+//   event.preventDefault()
+//   ui.clearBooks()
+// }
 
 const addHandlers = () => {
   // $('#getCardsButton').on('click', onGetCards)
-  $('#show-card').on('click', onShowCard)
+  // $('#show-card').on('click', onShowCard)
   $('#api-index').on('click', onApiIndex)
-  $('#clearCardsButton').on('click', onClearCards)
-  $('#create-card').on('click', onNewCard)
+  // $('#clearCardsButton').on('click', onClearCards)
+  // $('#create-card').on('click', onNewCard)
   // $('.content').on('click', 'button', onDeleteCard)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
@@ -164,6 +167,8 @@ const addHandlers = () => {
   // $('#list-cards').on('submit', onListCards)
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onShowCard)
+  $('#update-card').on('submit', onUpdateCard)
+  $('#delete-card').on('submit', onDeleteCard)
   // $('.cell').on('click,onGameboard')
   // $('#new-game').on('click', onNewCard)
 }

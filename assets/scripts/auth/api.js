@@ -102,18 +102,50 @@ const showCard = (cardId) => {
 //   })
 // }
 
-const newCard = function (data) {
+// const newCard = (data) => {
+//   return $.ajax({
+//     method: 'POST',
+//     url: config.apiUrl + '/cards',
+//     headers: {
+//       // 'Content-Type': 'application/json',
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: {
+//
+//       })
+//     }
+//   })
+// }
+
+// const newCard = (data) => {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards',
+//     method: 'POST',
+//     data,
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     }
+//   })
+// }
+
+const newCard = (data) => {
   return $.ajax({
-    data,
     method: 'POST',
     url: config.apiUrl + '/cards',
     headers: {
+      // 'Content-Type': 'application/json',
       'Authorization': 'Token token=' + store.user.token
+    },
+    data: {
+      'card': {
+        'name':
+        'description'
+      }
     }
   })
 }
 
-const updateCard = function (data) {
+const updateCard = (data) => {
   return $.ajax({
     data,
     method: 'PATCH',
@@ -121,10 +153,15 @@ const updateCard = function (data) {
     headers: {
       'Authorization': 'Token token=' + store.user.token
     }
+    // data: {
+    //   'card': {
+    //     'name':
+    //     'description'
+    //   }
   })
 }
 
-const deleteCards = (cardId) => {
+const deleteCard = (cardId) => {
   return $.ajax({
     method: 'DELETE',
     url: config.apiUrl + '/cards/' + cardId,
@@ -195,7 +232,7 @@ const deleteCards = (cardId) => {
 
 module.exports = {
   // getCards,
-  deleteCards,
+  deleteCard,
   apiIndex,
   signUp,
   signIn,
