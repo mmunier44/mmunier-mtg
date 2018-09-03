@@ -15,14 +15,8 @@ const store = require('../store.js')
 // //   })
 // // }
 //
-// const deleteCards = (cardId) => {
-//   return $.ajax({
-//     url: config.apiUrl + '/cards/' + cardId,
-//     method: 'DELETE'
-//   })
-// }
 
-const signUp = function (data, event) {
+const signUp = function (data) {
   // console.log('api URL is', config.apiUrl)
   // console.log('data', data)
   // console.log('event', event)
@@ -85,33 +79,65 @@ const apiIndex = function () {
   //   console.log(data)
 }
 
-// const showCard = (id) => {
-//   return $.ajax({
-//     url: config.apiUrl + '/cards/' + id,
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//     // data: data
-//   })
-// }
-
-// note here new card start
-const newCard = (data) => {
+const showCard = (cardId) => {
   return $.ajax({
-    url: config.apiUrl + '/cards',
-    method: 'POST',
+    url: config.apiUrl + '/cards/' + cardId,
+    method: 'GET',
     headers: {
       Authorization: 'Token token=' + store.user.token
-    },
-    data
+    }
+    // data: data
   })
 }
 
-// const updateCard = (data, event) => {
+// note here new card start
+// const newCard = (data) => {
+//   return $.ajax({
+//     url: config.apiUrl + '/cards',
+//     method: 'POST',
+//     headers: {
+//       Authorization: 'Token token=' + store.user.token
+//     },
+//     data
+//   })
+// }
+
+const newCard = function (data) {
+  return $.ajax({
+    data,
+    method: 'POST',
+    url: config.apiUrl + '/cards',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
+const updateCard = function (data) {
+  return $.ajax({
+    data,
+    method: 'PATCH',
+    url: config.apiUrl + '/cards/' + data.cardId,
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
+const deleteCards = (cardId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/cards/' + cardId,
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
+// const updateCard = (data) => {
 //   // console.log('updatemovedata', data)
 //   return $.ajax({
-//     url: config.apiUrl + '/cards/' + store.card.id,
+//     url: config.apiUrl + '/cards/' + data.cardId,
 //     method: 'PATCH',
 //     data: {
 //       'card': {
@@ -169,15 +195,15 @@ const newCard = (data) => {
 
 module.exports = {
   // getCards,
-  // deleteCards,
+  deleteCards,
   apiIndex,
   signUp,
   signIn,
   signOut,
   passwordChange,
   // listCards,
-  newCard
-  // updateCard,
-  // showCard
+  newCard,
+  updateCard,
+  showCard
   // showAllCards
 }

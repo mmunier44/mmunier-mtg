@@ -92,15 +92,26 @@ const signOutFail = (response) => {
 }
 
 const apiIndexSuccess = (response) => {
+  console.log(response)
   $('#message').text('Api Index Success')
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('apiIndexSuccess ran')
+  let html = '<ul>'
+  if (response.length > 0) {
+    response.forEach(card => {
+      console.log(card.name)
+      html += '<li>' + card.name + '</li>'
+    })
+  }
+  html += '</ul>'
+  $('#content').html(html)
+  console.log('apiIndexSuccess')
   // const showCardsHtml = showCardsTemplate({ cards: data.cards })
   // $('.content').append(content)
 }
 
-const apiIndexFail = (response) => {
+const apiIndexFail = () => {
   $('#message').text('Api Index Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
@@ -108,15 +119,26 @@ const apiIndexFail = (response) => {
 }
 
 const showCardSuccess = (response) => {
+  console.log('showcardresponse', response)
   $('#message').text('Show Card Success')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#show-cards input').val('')
+  let html = '<ul>'
+  html += '<li>' + response.name + '</li>'
+  html += '</ul>'
+  $('#content').html(html)
+  console.log('showcardsucces', response)
   // console.log(data)
   // console.log('showCardSuccess ran')
 }
 
-const showCardFail = (response) => {
+const showCardFail = () => {
+  let html = '<ul>'
+  html += '<li> Card does not exist.</li>'
+  html += '</ul>'
+  $('#content').html(html)
+  console.log('showcardfailer')
   $('#message').text('Show Cards Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
@@ -139,6 +161,95 @@ const showCardFail = (response) => {
 //   $('#list-cards input').val('')
 //   console.log('listCardsFail ran')
 // }
+
+const newCardSuccess = (response) => {
+  // console.log('cardid', data.card.id)
+  // store.card = data.card
+  console.log('store', store)
+  console.log('resonse', response)
+  let html = '<ul>'
+  html += '<li>' + response.name + '</li>'
+  html += '</ul>'
+  $('#content').html(html)
+  console.log('newcardsuccess', response)
+  $('#create-card input').val('')
+  // console.log('data.card.id', data.card.id)
+  // console.log('store.card', store.card)
+  // console.log('data.card', data.card)
+  // console.log('card', card)
+  // // console.log('id', id)
+  // console.log('card.id', card.id)
+  // $('#table').show()
+}
+
+const newCardFail = () => {
+  let html = '<ul>'
+  html += '<li> Card create failed.</li>'
+  html += '<ul>'
+  $('#content').html(html)
+  console.log('create card failed')
+  $('#create-card input').val('')
+}
+
+// const createCardFail = (response) => {
+//   $('#message').text('Create Card Fail')
+//   $('#message').removeClass()
+//   $('#message').addClass('fail')
+//   $('#create-card input').val('')
+//   // console.log('createCardFail ran')
+// }
+
+const updateCardSuccess = (response) => {
+  console.log('updateCardSuccess', response)
+  $('#message').text('Update Card Success')
+  $('#message').removeClass()
+  $('#message').addClass('success')
+  let html = '<ul>'
+  html += '<li>' + response.name + '</li>'
+  html += '</ul>'
+  $('#content').html(html)
+  console.log('updatecardsuccess', response)
+  $('#update-card input').val('')
+}
+
+const updateCardFail = () => {
+  let html = '<ul>'
+  html += '<li> Card does not exist. </li>'
+  html += '</ul>'
+  $('#content').html(html)
+  $('#update-card input').val('')
+  $('#message').text('Create Card Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  $('#create-card input').val('')
+  console.log('createCardFail ran')
+}
+
+const deleteCardSuccess = (response) => {
+  console.log(response)
+  let html = '<ul>'
+  html += '<li> Card has been deleted </li>'
+  html += '</ul>'
+  $('#content').html(html)
+  $('#delete-card input').val('')
+  // $('#message').text('Update Card Success')
+  // $('#message').removeClass()
+  // $('#message').addClass('success')
+  console.log('deleteCardSuccess', response)
+}
+
+const deleteCardFail = (response) => {
+  console.log(response)
+  let html = '<ul>'
+  html += '<li> Card did not exist </li>'
+  html += '</ul>'
+  $('#content').html(html)
+  $('#delete-card input').val('')
+  // $('#message').text('Update Card Success')
+  // $('#message').removeClass()
+  // $('#message').addClass('success')
+  console.log('deleteCardFail', response)
+}
 
 const clearBooks = () => {
   console.log(event)
@@ -165,44 +276,6 @@ const failure = (error) => {
 //   $('#change-password').addClass('hide')
 // }
 
-const newCardSuccess = (data) => {
-  console.log('cardid', data.card.id)
-  store.card = data.card
-  console.log('store', store)
-  console.log('data.card.id', data.card.id)
-  console.log('store.card', store.card)
-  console.log('data.card', data.card)
-  // console.log('card', card)
-  // // console.log('id', id)
-  // console.log('card.id', card.id)
-  // $('#table').show()
-}
-
-const newCardFail = (data) => {
-}
-
-const createCardFail = (response) => {
-  $('#message').text('Create Card Fail')
-  $('#message').removeClass()
-  $('#message').addClass('fail')
-  $('#create-card input').val('')
-  // console.log('createCardFail ran')
-}
-
-const updateCardSuccess = (data) => {
-  $('#message').text('Update Card Success')
-  $('#message').removeClass()
-  $('#message').addClass('success')
-}
-
-const updateCardFail = (response) => {
-  $('#message').text('Create Card Fail')
-  $('#message').removeClass()
-  $('#message').addClass('fail')
-  $('#create-card input').val('')
-  // console.log('createCardFail ran')
-}
-
 // const joinCardSuccess = (response) => {
 //   $('#message').text('Join Card Success')
 //   $('#message').removeClass()
@@ -219,9 +292,9 @@ const updateCardFail = (response) => {
 //   // console.log('joinCardFail ran')
 // }
 
-const updateCard = (data) => {
-  console.log('store.card', store.card)
-}
+// const updateCard = (data) => {
+//   console.log('store.card', store.card)
+// }
 
 module.exports = {
   // deleteBookSuccess,
@@ -243,13 +316,15 @@ module.exports = {
   // listCardsFail,
   updateCardSuccess,
   updateCardFail,
-  updateCard,
+  // updateCard,
   // joinCardSuccess,
   // joinCardFail,
   showCardSuccess,
   showCardFail,
   newCardFail,
-  createCardFail,
+  // createCardFail,
   // createCardSuccess,
-  newCardSuccess
+  newCardSuccess,
+  deleteCardSuccess,
+  deleteCardFail
 }

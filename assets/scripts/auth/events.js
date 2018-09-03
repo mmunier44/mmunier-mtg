@@ -24,10 +24,10 @@ const onSignIn = function (event) {
   event.preventDefault()
   // console.log('signed in')
   const data = getFormFields(event.target)
-  console.log('data', data)
+  // console.log('data', data)
   // console.log('data.card.', data.card)
-  console.log('store', store)
-  console.log('event', event)
+  // console.log('store', store)
+  // console.log('event', event)
   // data.card = store.card
   // console.log('sign in data', data)
 
@@ -71,31 +71,31 @@ const onApiIndex = function (event) {
     .catch(ui.apiIndexFail)
 }
 
-const onNewCard = function (data, event) {
-  $('table').removeClass('hide')
-  console.log('newcardworking?')
-  // const data = getFormFields(event.target)
-  // data.card.id = store.card.id
-  // console.log('check data', data)
-  $('#message').text('New Card!')
-  // data.user.card = store.user.card
-  data.card = store.card
-  api.newCard(data)
-    .then(ui.newCardSuccess)
-    .catch(ui.newCardFail)
-}
-
 const onShowCard = function (event) {
   $('#message').text('Card Shown')
   event.preventDefault()
   // console.log('Card Shown')
   // let id
-  const id = getFormFields(event.target).id
+  const cardId = getFormFields(event.target).cardId
   // const data = getFormFields(event.target)
 
-  api.showCard(id)
+  api.showCard(cardId)
     .then(ui.showCardSuccess)
     .catch(ui.showCardFail)
+}
+
+const onNewCard = function (event) {
+  $('table').removeClass('hide')
+  console.log('newcardworking?')
+  const data = getFormFields(event.target)
+  // data.card.id = store.card.id
+  // console.log('check data', data)
+  $('#message').text('New Card!')
+  // data.user.card = store.user.card
+  // data.card = store.card
+  api.newCard(data)
+    .then(ui.newCardSuccess)
+    .catch(ui.newCardFail)
 }
 
 const onUpdateCard = (event) => {
@@ -107,10 +107,22 @@ const onUpdateCard = (event) => {
   console.log('data check', data)
   console.log('data.card', data.card)
   console.log(data)
-  api.updateMove(data)
-    .then(ui.updateMoveSuccess)
-    .catch(ui.updateMoveFail)
+  api.updateCard(data)
+    .then(ui.updateCardSuccess)
+    .catch(ui.updateCardFail)
 }
+
+const onDeleteCard = (event) => {
+  event.preventDefault()
+  const cardId = getFormFields(event.target).cardId
+  // $(event.target).closest('section').data('id')
+  // if (confirm('Are you sure you want to delete this card?')) {
+  api.deleteCard(cardId)
+    // .then(() => onGetCards(event))
+    .then(ui.deleteCardSuccess)
+    .catch(ui.deleteCardFail)
+}
+// }
 
 // const onUpdateMove = (event) => {
 //   event.preventDefault()
@@ -137,16 +149,6 @@ const onClearCards = (event) => {
   event.preventDefault()
   ui.clearBooks()
 }
-
-// const onDeleteCard = (event) => {
-//   event.preventDefault()
-//   const cardId = $(event.target).closest('section').data('id')
-//   if (confirm('Are you sure you want to delete this card?')) {
-//     api.deleteCard(cardId)
-//       .then(() => onGetCards(event))
-//       .catch(ui.failure)
-//   }
-// }
 
 const addHandlers = () => {
   // $('#getCardsButton').on('click', onGetCards)
@@ -176,8 +178,8 @@ module.exports = {
   onShowCard,
   // onListCards,
   onSignOut,
-  onPasswordChange
-  // onDeleteCard
+  onPasswordChange,
+  onDeleteCard
 }
 
 // const onGetBooks = (event) => {
