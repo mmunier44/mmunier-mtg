@@ -2,6 +2,7 @@
 
 // const config = require('../config.js')
 const store = require('../store.js')
+// const cardlogic = require('./cardlogic.js')
 
 // const showBooksTemplate =
 // require('../templates/book-listing.handlebars')
@@ -125,7 +126,7 @@ const showCardSuccess = (response) => {
   $('#message').addClass('success')
   $('#show-cards input').val('')
   let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
+  html += '<li>' + response.cardId + '</li>'
   html += '</ul>'
   $('#content').html(html)
   console.log('showcardsucces', response)
@@ -162,17 +163,23 @@ const showCardFail = () => {
 //   console.log('listCardsFail ran')
 // }
 
+// note added store.card = reponse.card
 const newCardSuccess = (response) => {
   // console.log('cardid', data.card.id)
   // store.card = data.card
+  store.card = response.card
+  $('#message').text('Create Card Success')
+  console.log('NewSuccess ran')
   console.log('store', store)
-  console.log('resonse', response)
-  let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
-  html += '</ul>'
-  $('#content').html(html)
-  console.log('newcardsuccess', response)
-  $('#create-card input').val('')
+  console.log('response', response)
+  console.log(response.card)
+  // throw new Error('DRAGONS')
+  // let html = '<ul>'
+  // html += '<li>' + response.name + '</li>'
+  // html += '</ul>'
+  // $('#content').html(html)
+  // console.log('newcardsuccess', response)
+  // $('#create-card input').val('')
   // console.log('data.card.id', data.card.id)
   // console.log('store.card', store.card)
   // console.log('data.card', data.card)
@@ -183,12 +190,17 @@ const newCardSuccess = (response) => {
 }
 
 const newCardFail = () => {
-  let html = '<ul>'
-  html += '<li> Card create failed.</li>'
-  html += '<ul>'
-  $('#content').html(html)
+  $('#message').text('Create Card Fail')
+  $('#message').removeClass()
+  $('#message').addClass('fail')
+  console.log('newCardFail ran')
+
+  // let html = '<ul>'
+  // html += '<li> Card create failed.</li>'
+  // html += '<ul>'
+  // $('#content').html(html)
   console.log('create card failed')
-  $('#create-card input').val('')
+  // $('#create-card input').val('')
 }
 
 // const createCardFail = (response) => {
@@ -218,11 +230,11 @@ const updateCardFail = () => {
   html += '</ul>'
   $('#content').html(html)
   $('#update-card input').val('')
-  $('#message').text('Create Card Fail')
+  $('#message').text('Update Card Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
-  $('#create-card input').val('')
-  console.log('createCardFail ran')
+  $('#update-card input').val('')
+  console.log('updateCardFail ran')
 }
 
 const deleteCardSuccess = (response) => {

@@ -86,8 +86,10 @@ const onShowCard = function (event) {
 
 const onNewCard = (event) => {
   // $('table').removeClass('hide')
+  event.preventDefault()
   console.log('newcardworking?')
   const data = getFormFields(event.target)
+  console.log(event)
   // const card = getFormFields(event.target)
   // const cardId = getFormFields(event.target)
   console.log(data)
@@ -105,7 +107,7 @@ const onUpdateCard = (event) => {
   event.preventDefault()
   console.log('event logged', event)
   const data = getFormFields(event.target)
-  console.log('store.card.id', store.cardId)
+  console.log('store.cardId', store.cardId)
   console.log('store check', store)
   console.log('data check', data)
   console.log('data.card', data.card)
@@ -156,7 +158,7 @@ const onDeleteCard = (event) => {
 const addHandlers = () => {
   // $('#getCardsButton').on('click', onGetCards)
   // $('#show-card').on('click', onShowCard)
-  $('#api-index').on('click', onApiIndex)
+  $('#api-index').on('submit', onApiIndex)
   // $('#clearCardsButton').on('click', onClearCards)
   // $('#create-card').on('click', onNewCard)
   // $('.content').on('click', 'button', onDeleteCard)

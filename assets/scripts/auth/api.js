@@ -117,33 +117,33 @@ const showCard = (cardId) => {
 //   })
 // }
 
-// const newCard = (data) => {
-//   return $.ajax({
-//     url: config.apiUrl + '/cards',
-//     method: 'POST',
-//     data,
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
-
 const newCard = (data) => {
   return $.ajax({
-    method: 'POST',
     url: config.apiUrl + '/cards',
+    method: 'POST',
+    data: data,
     headers: {
-      // 'Content-Type': 'application/json',
-      'Authorization': 'Token token=' + store.user.token
-    },
-    data: {
-      'card': {
-        'name':
-        'description'
-      }
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
+
+// const newCard = (data) => {
+//   return $.ajax({
+//     method: 'POST',
+//     url: config.apiUrl + '/cards',
+//     headers: {
+//       // 'Content-Type': 'application/json',
+//       'Authorization': 'Token token=' + store.user.token
+//     },
+//     data: {
+//       'card': {
+//         'name':
+//         'description:'
+//       }
+//     }
+//   })
+// }
 
 const updateCard = (data) => {
   return $.ajax({
@@ -152,12 +152,13 @@ const updateCard = (data) => {
     url: config.apiUrl + '/cards/' + data.cardId,
     headers: {
       'Authorization': 'Token token=' + store.user.token
+    },
+    data: {
+      'card': {
+        'name':
+        'description'
+      }
     }
-    // data: {
-    //   'card': {
-    //     'name':
-    //     'description'
-    //   }
   })
 }
 
