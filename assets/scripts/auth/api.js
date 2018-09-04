@@ -3,17 +3,6 @@
 const config = require('../config.js')
 const store = require('../store.js')
 
-// const getCards = function () {
-//   return $.ajax({
-//     url: config.apiUrl + '/cards'
-//   })
-// }
-//
-// // const getCards = function () {
-// //   return $.ajax({
-// //     url: config.apiUrl + '/cards'
-// //   })
-// // }
 //
 
 const signUp = function (data) {
@@ -75,8 +64,6 @@ const apiIndex = function () {
     },
     url: config.apiUrl + '/cards'
   })
-  // .done(function (data) {
-  //   console.log(data)
 }
 
 const showCard = (cardId) => {
@@ -171,6 +158,39 @@ const deleteCard = (cardId) => {
   })
 }
 
+const getCardsHandlebar = function () {
+  console.log('Cards Handlebar')
+  return $.ajax({
+    method: 'GET',
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    },
+    url: config.apiUrl + '/cards'
+  })
+}
+
+const getCardHandlebar = function (cardId) {
+  console.log('1 Card Handlebar')
+  return $.ajax({
+    url: config.apiUrl + '/cards/' + cardId,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+    // data: data
+  })
+}
+
+const deleteCardHandlebar = (cardId) => {
+  return $.ajax({
+    method: 'DELETE',
+    url: config.apiUrl + '/cards/' + cardId,
+    headers: {
+      'Authorization': 'Token token=' + store.user.token
+    }
+  })
+}
+
 // const updateCard = (data) => {
 //   // console.log('updatemovedata', data)
 //   return $.ajax({
@@ -241,6 +261,9 @@ module.exports = {
   // listCards,
   newCard,
   updateCard,
-  showCard
+  showCard,
+  getCardHandlebar,
+  getCardsHandlebar,
+  deleteCardHandlebar
   // showAllCards
 }

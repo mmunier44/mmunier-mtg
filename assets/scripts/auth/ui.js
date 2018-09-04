@@ -6,8 +6,8 @@ const store = require('../store.js')
 
 // const showBooksTemplate =
 // require('../templates/book-listing.handlebars')
-// const showCardsTemplate =
-// require('../templates/card-listing.handlebars')
+const showCardsTemplate =
+require('../templates/cards-listing.handlebars')
 
 // const getBooksSuccess = (data) => {
 //   const showBooksHtml = showBooksTemplate({ books: data.books })
@@ -263,13 +263,19 @@ const deleteCardFail = (response) => {
   console.log('deleteCardFail', response)
 }
 
-const clearBooks = () => {
+const clearCards = () => {
   console.log(event)
   $('.content').empty()
 }
 
 const failure = (error) => {
   console.error(error)
+}
+
+const getCardsHandlebarSuccess = (data) => {
+  console.log(data)
+  const showCardsHtml = showCardsTemplate({ cards: data.cards })
+  $('.content').html(showCardsHtml)
 }
 
 // const createCardSuccess = (data) => {
@@ -314,7 +320,7 @@ module.exports = {
   // getBooksSuccess,
   apiIndexSuccess,
   apiIndexFail,
-  clearBooks,
+  clearCards,
   failure,
   signUpSuccess,
   signUpFail,
@@ -338,5 +344,6 @@ module.exports = {
   // createCardSuccess,
   newCardSuccess,
   deleteCardSuccess,
-  deleteCardFail
+  deleteCardFail,
+  getCardsHandlebarSuccess
 }

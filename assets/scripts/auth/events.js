@@ -143,23 +143,23 @@ const onDeleteCard = (event) => {
 //     .catch(ui.updateMoveFail)
 // }
 
-// const onGetCards = (event) => {
-//   event.preventDefault()
-//   api.getCards()
-//     .then(ui.getCardsSuccess)
-//     .catch(ui.failure)
-// }
+const onGetCardsHandlebar = (event) => {
+  event.preventDefault()
+  api.getCardsHandlebar()
+    .then(ui.getCardsHandlebarSuccess)
+    .catch(ui.failure)
+}
 
-// const onClearCards = (event) => {
-//   event.preventDefault()
-//   ui.clearBooks()
-// }
+const onClearCards = (event) => {
+  event.preventDefault()
+  ui.clearCards()
+}
 
 const addHandlers = () => {
-  // $('#getCardsButton').on('click', onGetCards)
+  $('#getCardsButton').on('click', onGetCardsHandlebar)
   // $('#show-card').on('click', onShowCard)
   $('#api-index').on('submit', onApiIndex)
-  // $('#clearCardsButton').on('click', onClearCards)
+  $('#clearCardsButton').on('click', onClearCards)
   // $('#create-card').on('click', onNewCard)
   // $('.content').on('click', 'button', onDeleteCard)
   $('#sign-up').on('submit', onSignUp)
@@ -186,7 +186,9 @@ module.exports = {
   // onListCards,
   onSignOut,
   onPasswordChange,
-  onDeleteCard
+  onDeleteCard,
+  onGetCardsHandlebar,
+  onClearCards
 }
 
 // const onGetBooks = (event) => {
