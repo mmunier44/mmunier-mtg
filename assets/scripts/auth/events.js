@@ -7,17 +7,36 @@ const ui = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
 
 const onSignUp = function (event) {
-  event.preventDefault()
   $('#message').text('Sign Up Successful')
-  // console.log('submitted the form')
-  // console.log('event.target:', event.target)
+  event.preventDefault()
   const data = getFormFields(event.target)
-  // console.log('data from the form:', data)
-
+  store.credentials = data
   api.signUp(data)
-    .then(ui.signUpSuccess)
+    .then(onSignUpIn)
     .catch(ui.signUpFail)
 }
+
+const onSignUpIn = function (event) {
+  delete store.credentials.password_confirmation
+  const dataWithoutPC = store.credentials
+  api.signIn(dataWithoutPC)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure)
+}
+
+// const onSignUp = function (event) {
+//   $('#message').text('Sign In Successful')
+//   event.preventDefault()
+//   $('#message').text('Sign Up Successful')
+//   // console.log('submitted the form')
+//   // console.log('event.target:', event.target)
+//   const data = getFormFields(event.target)
+//   // console.log('data from the form:', data)
+//
+//   api.signUp(data)
+//     .then(ui.signUpSuccess)
+//     .catch(ui.signUpFail)
+// }
 
 const onSignIn = function (event) {
   $('#message').text('Sign In Successful')
@@ -150,6 +169,17 @@ const onGetCardsHandlebar = (event) => {
     .catch(ui.failure)
 }
 
+const onGetCardHandlebar = (event) => {
+  event.preventDefault()
+  const cardId = getFormFields(event.target).cardId
+  console.log(cardId)
+  delete store.cardId
+  api.getCardHandlebar(cardId)
+  // console.log(cardId)
+    .then(ui.getCardHandlebarSuccess)
+    .catch(ui.failure)
+}
+
 const onClearCards = (event) => {
   event.preventDefault()
   ui.clearCards()
@@ -168,7 +198,7 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut)
   // $('#list-cards').on('submit', onListCards)
   $('#create-card').on('submit', onNewCard)
-  $('#show-card').on('submit', onShowCard)
+  $('#show-card').on('submit', onGetCardHandlebar)
   $('#update-card').on('submit', onUpdateCard)
   $('#delete-card').on('submit', onDeleteCard)
   // $('.cell').on('click,onGameboard')
@@ -188,7 +218,8 @@ module.exports = {
   onPasswordChange,
   onDeleteCard,
   onGetCardsHandlebar,
-  onClearCards
+  onClearCards,
+  onGetCardHandlebar
 }
 
 // const onGetBooks = (event) => {

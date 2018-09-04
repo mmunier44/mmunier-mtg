@@ -23,8 +23,8 @@
 <!-- <div class="bg"></div> -->
 
   <nav>
-    <button type="button" id="getCardsButton" class="btn btn-success btn btn-xs">Get Cards!</button>
-    <button id="clearCardsButton" class="btn btn-default btn btn-xs">Clear Cards!</button>
+    <button type="button" id="getCardsButton" class="d-none btn btn-success btn btn-xs">Get Cards!</button>
+    <button id="clearCardsButton" class="d-none btn btn-default btn btn-xs">Clear Cards!</button>
     <!-- <button id="showCardsButton" class="btn btn-link btn-xs">Show Card!</button>
     <button id="createCardsButton" class="btn btn-info btn-xs">Create Card!</button>
     <button id="updateCardsButton" class="btn btn-warning btn-xs">Update Card!</button>
@@ -44,7 +44,7 @@
 </section> -->
 
   <section>
-    <form id="create-card" class>
+    <form id="create-card" class="d-none">
       <fieldset>
         <legend>Create Card</legend>
         <!-- <input type="text" name="card" placeholder="card"> -->
@@ -55,7 +55,7 @@
     </form>
   </section>
   <section>
-    <form id="update-card" class>
+    <form id="update-card" class="d-none">
       <fieldset>
         <legend>Update Card</legend>
         <input type="text" name="cardId" placeholder="card id">
@@ -66,7 +66,7 @@
     </form>
   </section>
   <section>
-    <form id="show-card" class>
+    <form id="show-card" class="d-none">
       <fieldset>
         <legend>Show Card</legend>
         <input type="text" name="cardId" placeholder="card id">
@@ -76,7 +76,7 @@
     </form>
   </section>
   <section>
-    <form id="delete-card" class>
+    <form id="delete-card" class="d-none">
       <fieldset>
         <legend>Delete Card</legend>
         <input type="text" name="cardId" placeholder="card id">
@@ -115,7 +115,7 @@
         </form>
       </div>
       <div>
-        <form id="change-password" class="hide">
+        <form id="change-password" class="d-none">
           <fieldset>
             <legend>Password Change</legend>
             <input type="password" name="passwords[old]" placeholder="Old Password">
@@ -126,7 +126,7 @@
       </div>
 
       <div>
-        <form id="sign-out" class='hide'>
+        <form id="sign-out" class='d-none'>
           <fieldset>
             <legend>Sign Out</legend>
             <button type="submit" class='btn btn-primary'>Sign Out</button>

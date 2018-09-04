@@ -2,12 +2,16 @@
 
 // const config = require('../config.js')
 const store = require('../store.js')
+
 // const cardlogic = require('./cardlogic.js')
 
 // const showBooksTemplate =
 // require('../templates/book-listing.handlebars')
 const showCardsTemplate =
 require('../templates/cards-listing.handlebars')
+
+const showCardTemplate =
+require('../templates/card-listing.handlebars')
 
 // const getBooksSuccess = (data) => {
 //   const showBooksHtml = showBooksTemplate({ books: data.books })
@@ -23,7 +27,7 @@ const signUpSuccess = (data) => {
   $('#message').text('Successful Signup')
   $('#message').removeClass()
   $('#sign-up input').val('')
-  $('#sign-up').addClass('hide')
+  $('#sign-up').addClass('d-none')
 }
 
 const signUpFail = function () {
@@ -40,12 +44,18 @@ const signInSuccess = (response) => {
   $('#sign-in input').val('')
   $('#change-password input').val('')
   store.user = response.user
-  $('#change-password').removeClass('hide')
-  $('#sign-out').removeClass('hide')
-  $('#sign-up').addClass('hide')
-  $('#sign-in').addClass('hide')
-  $('#new-card').removeClass('hide')
-  $('#list-cards').removeClass('hide')
+  $('#change-password').removeClass('d-none')
+  $('#sign-out').removeClass('d-none')
+  $('#sign-up').addClass('d-none')
+  $('#sign-in').addClass('d-none')
+  $('#new-card').removeClass('d-none')
+  $('#list-cards').removeClass('d-none')
+  $('#getCardsButton').removeClass('d-none')
+  $('#clearCardsButton').removeClass('d-none')
+  $('#create-card').removeClass('d-none')
+  $('#update-card').removeClass('d-none')
+  $('#show-card').removeClass('d-none')
+  $('#delete-card').removeClass('d-none')
   console.log('store.user', store.user)
   // console.log('data.user', data.user)
 }
@@ -62,7 +72,7 @@ const passwordChangeSuccess = (response) => {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#change-password input').val('')
-  $('#change-password').addClass('hide')
+  $('#change-password').addClass('d-none')
 }
 
 const passwordChangeFail = function () {
@@ -77,11 +87,20 @@ const signOutSuccess = (response) => {
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-in input').val('')
-  $('#change-password').addClass('hide')
-  $('#sign-up').removeClass('hide')
-  $('#new-card').addClass('hide')
-  $('#sign-in').removeClass('hide')
-  $('#sign-out').addClass('hide')
+  $('#change-password').addClass('d-none')
+  $('#sign-up').removeClass('d-none')
+  $('#new-card').addClass('d-none')
+  $('#sign-in').removeClass('d-none')
+  $('#sign-out').addClass('d-none')
+  $('#new-card').addClass('d-none')
+  $('#list-cards').addClass('d-none')
+  $('#getCardsButton').addClass('d-none')
+  $('#clearCardsButton').addClass('d-none')
+  $('#create-card').addClass('d-none')
+  $('#update-card').addClass('d-none')
+  $('#show-card').addClass('d-none')
+  $('#delete-card').addClass('d-none')
+  $('.content').addClass('d-none')
 }
 
 const signOutFail = (response) => {
@@ -98,15 +117,6 @@ const apiIndexSuccess = (response) => {
   $('#message').removeClass()
   $('#message').addClass('success')
   console.log('apiIndexSuccess ran')
-  let html = '<ul>'
-  if (response.length > 0) {
-    response.forEach(card => {
-      console.log(card.name)
-      html += '<li>' + card.name + '</li>'
-    })
-  }
-  html += '</ul>'
-  $('#content').html(html)
   console.log('apiIndexSuccess')
   // const showCardsHtml = showCardsTemplate({ cards: data.cards })
   // $('.content').append(content)
@@ -121,29 +131,23 @@ const apiIndexFail = () => {
 
 const showCardSuccess = (response) => {
   console.log('showcardresponse', response)
+  store.card = response.card
   $('#message').text('Show Card Success')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#show-cards input').val('')
-  let html = '<ul>'
-  html += '<li>' + response.cardId + '</li>'
-  html += '</ul>'
-  $('#content').html(html)
   console.log('showcardsucces', response)
   // console.log(data)
   // console.log('showCardSuccess ran')
 }
 
 const showCardFail = () => {
-  let html = '<ul>'
-  html += '<li> Card does not exist.</li>'
-  html += '</ul>'
-  $('#content').html(html)
   console.log('showcardfailer')
   $('#message').text('Show Cards Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#show-cards input').val('')
+  $('#message').text('Card does not exist')
   // console.log('showCardFail ran')
 }
 
@@ -173,20 +177,6 @@ const newCardSuccess = (response) => {
   console.log('store', store)
   console.log('response', response)
   console.log(response.card)
-  // throw new Error('DRAGONS')
-  // let html = '<ul>'
-  // html += '<li>' + response.name + '</li>'
-  // html += '</ul>'
-  // $('#content').html(html)
-  // console.log('newcardsuccess', response)
-  // $('#create-card input').val('')
-  // console.log('data.card.id', data.card.id)
-  // console.log('store.card', store.card)
-  // console.log('data.card', data.card)
-  // console.log('card', card)
-  // // console.log('id', id)
-  // console.log('card.id', card.id)
-  // $('#table').show()
 }
 
 const newCardFail = () => {
@@ -194,11 +184,6 @@ const newCardFail = () => {
   $('#message').removeClass()
   $('#message').addClass('fail')
   console.log('newCardFail ran')
-
-  // let html = '<ul>'
-  // html += '<li> Card create failed.</li>'
-  // html += '<ul>'
-  // $('#content').html(html)
   console.log('create card failed')
   // $('#create-card input').val('')
 }
@@ -216,34 +201,24 @@ const updateCardSuccess = (response) => {
   $('#message').text('Update Card Success')
   $('#message').removeClass()
   $('#message').addClass('success')
-  let html = '<ul>'
-  html += '<li>' + response.name + '</li>'
-  html += '</ul>'
-  $('#content').html(html)
   console.log('updatecardsuccess', response)
   $('#update-card input').val('')
 }
 
 const updateCardFail = () => {
-  let html = '<ul>'
-  html += '<li> Card does not exist, or you did not create the card </li>'
-  html += '</ul>'
-  $('#content').html(html)
   $('#update-card input').val('')
   $('#message').text('Update Card Fail')
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#update-card input').val('')
+  $('#message').text('Card does not update, or you did not create it')
   console.log('updateCardFail ran')
 }
 
 const deleteCardSuccess = (response) => {
   console.log(response)
-  let html = '<ul>'
-  html += '<li> Card has been deleted </li>'
-  html += '</ul>'
-  $('#content').html(html)
   $('#delete-card input').val('')
+  $('#message').text('Card has been deleted')
   // $('#message').text('Update Card Success')
   // $('#message').removeClass()
   // $('#message').addClass('success')
@@ -252,15 +227,12 @@ const deleteCardSuccess = (response) => {
 
 const deleteCardFail = (response) => {
   console.log(response)
-  let html = '<ul>'
-  html += '<li> Card did not exist or you did not create the card </li>'
-  html += '</ul>'
-  $('#content').html(html)
   $('#delete-card input').val('')
   // $('#message').text('Update Card Success')
   // $('#message').removeClass()
   // $('#message').addClass('success')
   console.log('deleteCardFail', response)
+  $('#message').text('Card does not exist or you did not create the card')
 }
 
 const clearCards = () => {
@@ -276,6 +248,15 @@ const getCardsHandlebarSuccess = (data) => {
   console.log(data)
   const showCardsHtml = showCardsTemplate({ cards: data.cards })
   $('.content').html(showCardsHtml)
+  $('#message').text('All Cards Shown!')
+}
+
+const getCardHandlebarSuccess = (data) => {
+  console.log(data)
+  const showCardHtml = showCardTemplate({ cards: data.cards })
+  $('.content').html(showCardHtml)
+  $('#message').text('1 Card Shown')
+  $('#show-card input').val('')
 }
 
 // const createCardSuccess = (data) => {
@@ -345,5 +326,6 @@ module.exports = {
   newCardSuccess,
   deleteCardSuccess,
   deleteCardFail,
-  getCardsHandlebarSuccess
+  getCardsHandlebarSuccess,
+  getCardHandlebarSuccess
 }
