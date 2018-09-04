@@ -1,6 +1,8 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 // @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 @import '~bootstrap/scss/bootstrap';
+@import 'color';
+@import 'theme';
 
 $black: #000;
 $red: rgb(240, 128, 128);
@@ -9,9 +11,19 @@ $red: rgb(240, 128, 128);
   background-color: $red;
   bottom: 0;
   color: $black;
-  position: fixed;
-  text-align: center;
-  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 25%;
+  justify-content: center;
+  overflow-y: auto;
+  position: auto;
+  text-align: auto;
+  width: 50%;
+}
+
+.header {
+  height: 50%;
 }
 
 // .bg {

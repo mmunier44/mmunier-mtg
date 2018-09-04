@@ -161,7 +161,7 @@ const addHandlers = () => {
   $('#api-index').on('submit', onApiIndex)
   $('#clearCardsButton').on('click', onClearCards)
   // $('#create-card').on('click', onNewCard)
-  // $('.content').on('click', 'button', onDeleteCard)
+  $('.content').on('click', 'button', onDeleteCard)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
