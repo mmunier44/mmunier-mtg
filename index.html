@@ -59,8 +59,8 @@
       <fieldset>
         <legend>Update Card</legend>
         <input type="text" name="cardId" placeholder="card id">
-        <input type="text" name="name" placeholder="card name">
-        <input type="text" name="description" placeholder="card description">
+        <input type="text" name="card[name]" placeholder="card name">
+        <input type="text" name="card[description]" placeholder="card description">
         <button type="submit" class='btn btn-success'>Update Card</button>
       </fieldset>
     </form>
@@ -70,7 +70,7 @@
       <fieldset>
         <legend>Show Card</legend>
         <input type="text" name="cardId" placeholder="card id">
-        <input type="text" name="name" placeholder="name">
+        <input type="text" name="card[name]" placeholder="name">
         <button type="submit" class='btn btn-info'>Show Card</button>
       </fieldset>
     </form>
@@ -80,7 +80,7 @@
       <fieldset>
         <legend>Delete Card</legend>
         <input type="text" name="cardId" placeholder="card id">
-        <input type="text" name="name" placeholder="name">
+        <input type="text" name="card[name]" placeholder="name">
         <button type="submit" class='btn btn-danger'>Delete Card</button>
       </fieldset>
     </form>

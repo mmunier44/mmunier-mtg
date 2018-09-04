@@ -153,12 +153,11 @@ const updateCard = (data) => {
     headers: {
       'Authorization': 'Token token=' + store.user.token
     },
-    data: {
-      'card': {
-        'name':
-        'description'
-      }
-    }
+    data: data
+    // 'card': {
+    //   'name':
+    //   'description'
+    // }
   })
 }
 
