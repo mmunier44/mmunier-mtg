@@ -17,9 +17,8 @@ If a data object that was being passed through the different functions was incor
 
 I wanted as simple of a design to focus on getting all authentication functionality completed.
 
-![Wireframe]
-https://i.imgur.com/wxuHCdl.jpg
-https://i.imgur.com/RxyVIl9.png
+![Wireframe] https://i.imgur.com/wxuHCdl.jpg
+![Wireframe] https://i.imgur.com/RxyVIl9.png
 
 The final product would be a way to create decks from older sets with a twinge of nostalgia.
 
