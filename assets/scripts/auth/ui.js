@@ -45,6 +45,7 @@ const signInSuccess = (response) => {
   $('#update-card').removeClass('d-none')
   $('#show-card').removeClass('d-none')
   $('#delete-card').removeClass('d-none')
+  $('.content').removeClass('d-none')
   console.log('store.user', store.user)
   // console.log('data.user', data.user)
 }
