@@ -177,6 +177,8 @@ const newCardSuccess = (response) => {
   console.log('store', store)
   console.log('response', response)
   console.log(response.card)
+  $('#cardinfo').html(response.card)
+  $('#create-card input').val('')
 }
 
 const newCardFail = () => {

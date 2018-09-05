@@ -4,12 +4,14 @@
   <!-- {{> partial}}
   Don't uncomment yet -->
 
-  <div>
-    <h1 data-id="{{card.id}}"> <small>Name: {{card.name}}</small></h1>
+  <div class="card" style="width: 18rem;">>
+    <!-- <h1 data-id="{{card.id}}"> <small>Name: {{card.name}}</small></h1> -->
     <section data-id="{{card.id}}">
-      <p>{{card.name}}</p>
-      <p>{{card.description}}
-      <button type="submit" class="btn btn-danger">Remove</button>
+      <p> id {{card.id}}</p>
+      <p> name {{card.name}}</p>
+      <p> description {{card.description}}
+      <br>
+      <button type="submit" class="btn btn-danger">Delete</button>
     </section>
   </div>
 
