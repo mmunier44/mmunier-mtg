@@ -74,6 +74,7 @@ const passwordChangeFail = function () {
 const signOutSuccess = (response) => {
   $('#message').text('Successful Sign Out')
   $('#message').removeClass()
+  $('message').val('')
   $('#message').addClass('success')
   $('#sign-in input').val('')
   $('#change-password').addClass('d-none')
