@@ -21,7 +21,8 @@ button {
   color: $font-color;
   display: flex;
   flex-direction: column;
+  height: auto;
   overflow-y: auto;
-  padding: 1px;
+  padding: 5px;
   text-align: center;
 }

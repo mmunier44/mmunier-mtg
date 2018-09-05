@@ -1,5 +1,7 @@
 'use strict'
 
+console.log = function () {}
+
 const store = {
 }
 

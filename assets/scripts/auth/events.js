@@ -1,11 +1,11 @@
 'use strict'
 
-// const config = require('../config.js')
 const store = require('../store.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 const getFormFields = require('../../../lib/get-form-fields.js')
 
+// Note login credentials being stored
 const onSignUp = function (event) {
   $('#message').text('Sign Up Successful')
   event.preventDefault()
@@ -15,7 +15,7 @@ const onSignUp = function (event) {
     .then(onSignUpIn)
     .catch(ui.signUpFail)
 }
-
+// Note Datawithout PC being drawn from store.credentials
 const onSignUpIn = function (event) {
   delete store.credentials.password_confirmation
   const dataWithoutPC = store.credentials
@@ -41,14 +41,7 @@ const onSignUpIn = function (event) {
 const onSignIn = function (event) {
   $('#message').text('Sign In Successful')
   event.preventDefault()
-  // console.log('signed in')
   const data = getFormFields(event.target)
-  // console.log('data', data)
-  // console.log('data.card.', data.card)
-  // console.log('store', store)
-  // console.log('event', event)
-  // data.card = store.card
-  // console.log('sign in data', data)
 
   api.signIn(data)
     .then(ui.signInSuccess)
@@ -58,7 +51,6 @@ const onSignIn = function (event) {
 const onPasswordChange = function (event) {
   $('#message').text('Password Changed')
   event.preventDefault()
-  // console.log('password changed')
   const data = getFormFields(event.target)
 
   api.passwordChange(data)
@@ -69,7 +61,6 @@ const onPasswordChange = function (event) {
 const onSignOut = function (event) {
   $('#message').text('Sign Out Successful')
   event.preventDefault()
-  // console.log('Signed Out')
   const data = getFormFields(event.target)
 
   api.signOut(data)
@@ -81,9 +72,6 @@ const onApiIndex = function (event) {
   $('#message').text('Cards List Api Pinged')
   event.preventDefault()
   console.log('event', event)
-  // data.cardId = store.cardId
-  // console.log('data', data)
-  // const data = getFormFields(event.target)
 
   api.apiIndex()
     .then(ui.apiIndexSuccess)
@@ -149,20 +137,6 @@ const onDeleteCard = (event) => {
 }
 // }
 
-// const onUpdateMove = (event) => {
-//   event.preventDefault()
-//   console.log('event logged', event)
-//   const data = getFormFields(event.target)
-//   console.log('store.card.id', store.card.id)
-//   console.log('store check', store)
-//   console.log('data check', data)
-//   console.log('data.card', data.card)
-//   console.log(data)
-//   api.updateMove(data)
-//     .then(ui.updateMoveSuccess)
-//     .catch(ui.updateMoveFail)
-// }
-
 const onGetCardsHandlebar = (event) => {
   event.preventDefault()
   api.getCardsHandlebar()
@@ -186,13 +160,26 @@ const onClearCards = (event) => {
   ui.clearCards()
 }
 
+const onDeleteCardHandlebar = (event) => {
+  event.preventDefault()
+  console.log(event)
+  console.log(event.target)
+  const cardId = $(event.target).closest('section').card('id')
+  if (confirm('Are you sure you want to delete this card?')) {
+    console.log(cardId)
+    api.deleteCard(cardId)
+      .then(() => onGetCardsHandlebar(event))
+      .catch(ui.failure)
+  }
+}
+
 const addHandlers = () => {
   $('#getCardsButton').on('click', onGetCardsHandlebar)
   // $('#show-card').on('click', onShowCard)
   $('#api-index').on('submit', onApiIndex)
   $('#clearCardsButton').on('click', onClearCards)
   // $('#create-card').on('click', onNewCard)
-  $('.content').on('click', 'button', onDeleteCard)
+  $('.content').on('click', 'button', onDeleteCardHandlebar)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
@@ -202,8 +189,6 @@ const addHandlers = () => {
   $('#show-card').on('submit', onGetCardHandlebar)
   $('#update-card').on('submit', onUpdateCard)
   $('#delete-card').on('submit', onDeleteCard)
-  // $('.cell').on('click,onGameboard')
-  // $('#new-game').on('click', onNewCard)
 }
 
 module.exports = {
@@ -220,27 +205,6 @@ module.exports = {
   onDeleteCard,
   onGetCardsHandlebar,
   onClearCards,
-  onGetCardHandlebar
+  onGetCardHandlebar,
+  onDeleteCardHandlebar
 }
-
-// const onGetBooks = (event) => {
-//   event.preventDefault()
-//   api.getBooks()
-//     .then(ui.getBooksSuccess)
-//     .catch(ui.failure)
-// }
-//
-// const onClearBooks = (event) => {
-//   event.preventDefault()
-//   ui.clearBooks()
-// }
-// /
-// const onDeleteBook = (event) => {
-//   event.preventDefault()
-//   const bookId = $(event.target).closest('section').data('id')
-//   if (confirm('Are you sure you want to delete this book?')) {
-//     api.deleteBook(bookId)
-//       .then(() => onGetBooks(event))
-//       .catch(ui.failure)
-//   }
-// }

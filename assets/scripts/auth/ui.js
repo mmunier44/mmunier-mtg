@@ -5,23 +5,11 @@ const store = require('../store.js')
 
 // const cardlogic = require('./cardlogic.js')
 
-// const showBooksTemplate =
-// require('../templates/book-listing.handlebars')
 const showCardsTemplate =
 require('../templates/cards-listing.handlebars')
 
 const showCardTemplate =
 require('../templates/card-listing.handlebars')
-
-// const getBooksSuccess = (data) => {
-//   const showBooksHtml = showBooksTemplate({ books: data.books })
-//   $('.content').append(showBooksHtml)
-// }
-
-// const getCardsSuccess = (data) => {
-//   const showCardsHtml = showCardsTemplate({ cards: data.cards })
-//   $('.content').append(showCardsHtml)
-// }
 
 const signUpSuccess = (data) => {
   $('#message').text('Successful Signup')
@@ -151,22 +139,6 @@ const showCardFail = () => {
   // console.log('showCardFail ran')
 }
 
-// const listCardsSuccess = (response) => {
-//   $('#message').text('List Cards Success')
-//   $('#message').removeClass()
-//   $('#message').addClass('success')
-//   $('#list-cards input').val('')
-//   // console.log('listCardsSuccess ran')
-// }
-//
-// const listCardsFail = (response) => {
-//   $('#message').text('List Card Fail')
-//   $('#message').removeClass()
-//   $('#message').addClass('fail')
-//   $('#list-cards input').val('')
-//   console.log('listCardsFail ran')
-// }
-
 // note added store.card = reponse.card
 const newCardSuccess = (response) => {
   // console.log('cardid', data.card.id)
@@ -177,7 +149,6 @@ const newCardSuccess = (response) => {
   console.log('store', store)
   console.log('response', response)
   console.log(response.card)
-  $('#cardinfo').html(response.card)
   $('#create-card input').val('')
 }
 
@@ -189,14 +160,6 @@ const newCardFail = () => {
   console.log('create card failed')
   // $('#create-card input').val('')
 }
-
-// const createCardFail = (response) => {
-//   $('#message').text('Create Card Fail')
-//   $('#message').removeClass()
-//   $('#message').addClass('fail')
-//   $('#create-card input').val('')
-//   // console.log('createCardFail ran')
-// }
 
 const updateCardSuccess = (response) => {
   console.log('updateCardSuccess', response)
@@ -256,46 +219,11 @@ const getCardsHandlebarSuccess = (data) => {
 const getCardHandlebarSuccess = (data) => {
   console.log(data)
   const showCardHtml = showCardTemplate({ cards: data.cards })
-  $('.content').html(showCardHtml)
   $('#message').text('1 Card Shown')
   $('#show-card input').val('')
+  $('.content').removeClass('d-none')
+  $('.content').html(showCardHtml)
 }
-
-// const createCardSuccess = (data) => {
-//   console.log('Card ID: ', data.card.id)
-//   store.cardId = data.cardId
-//   $('table').removeClass('hide')
-//   console.log('store', store)
-//   console.log('data.card.id', data.card.id)
-//   console.log('newstorecard', store.card)
-//   console.log('newdatacard', data.card)
-//   $('#message').text('Create Card Success')
-//   $('#message').removeClass()
-//   $('#message').addClass('success')
-//   $('#create-cards input').val('')
-//   console.log('createCardSuccess ran')
-//   $('#change-password').addClass('hide')
-// }
-
-// const joinCardSuccess = (response) => {
-//   $('#message').text('Join Card Success')
-//   $('#message').removeClass()
-//   $('#message').addClass('fail')
-//   $('#join-cards input').val('')
-//   // console.log('joinCardSuccess ran')
-// }
-//
-// const joinCardFail = (response) => {
-//   $('#message').text('Join Card Fail')
-//   $('#message').removeClass()
-//   $('#message').addClass('fail')
-//   $('#join-cards input').val('')
-//   // console.log('joinCardFail ran')
-// }
-
-// const updateCard = (data) => {
-//   console.log('store.card', store.card)
-// }
 
 module.exports = {
   // deleteBookSuccess,

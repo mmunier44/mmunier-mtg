@@ -1,12 +1,12 @@
 
+
 {{#each cards as |card|}}
-  {{log card}}
   <!-- {{> partial}}
   Don't uncomment yet -->
 <div class="card-columns column-count: 3">
   <!-- <div class="col-sm-6"> -->
   <div class ="card text-white bg-primary mb-3" style="width: 18rem;">
-    <img class="card-img-overlay" src=".../mtg_background.jpg" alt="Card image overlay">
+    <!-- <img class="card-img-overlay" src="" alt="Card image overlay"> -->
     <!-- <h1 data-id="{{card.id}}"> <small>Name: {{card.name}}</small></h1> -->
     <div class ="card-body">
     <section data-id="{{card.id}}">
@@ -14,7 +14,7 @@
       <p> name {{card.name}}</p>
       <p> description {{card.description}}
       <br>
-      <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      <!-- <button type="submit" class="btn btn-danger btn-sm">Delete</button> -->
     </section>
   </div>
 </div>
@@ -22,3 +22,50 @@
 </div>
 
 {{/each}}
+
+<section>
+  <form id="create-card" class="d-none">
+    <fieldset>
+      <legend>Create Card</legend>
+      <!-- <input type="text" name="card" placeholder="card"> -->
+      <input type="text" name="card[name]" placeholder="card name">
+      <input type="text" name="card[description]" placeholder="card description">
+      <button type="submit" class='btn btn-secondary'>Create Card</button>
+    </fieldset>
+  </form>
+</section>
+<section>
+  <form id="update-card" class="d-none">
+    <fieldset>
+      <legend>Update Card</legend>
+      <input type="text" name="cardId" placeholder="card id">
+      <input type="text" name="card[name]" placeholder="card name">
+      <input type="text" name="card[description]" placeholder="card description">
+      <button type="submit" class='btn btn-success'>Update Card</button>
+    </fieldset>
+  </form>
+</section>
+<!-- <section>
+  <form id="show-card" class="d-none">
+    <fieldset>
+      <legend>Show Card</legend>
+      <input type="text" name="cardId" placeholder="card id"> -->
+      <!-- <input type="text" name="card[name]" placeholder="name"> -->
+      <!-- <button type="submit" class='btn btn-info'>Show Card</button>
+    </fieldset>
+  </form>
+</section> -->
+<section>
+  <form id="delete-card" class="d-none">
+    <fieldset>
+      <legend>Delete Card</legend>
+      <input type="text" name="cardId" placeholder="card id">
+      <!-- <input type="text" name="card[name]" placeholder="name"> -->
+      <button type="submit" class='btn btn-danger'>Delete Card</button>
+    </fieldset>
+  </form>
+</section>
+
+<main>
+  <div id="content" class="content"></div>
+</main>
