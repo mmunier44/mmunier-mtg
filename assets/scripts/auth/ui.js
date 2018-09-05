@@ -31,6 +31,7 @@ const signInSuccess = (response) => {
   $('#message').addClass('success')
   $('#sign-in input').val('')
   $('#change-password input').val('')
+  $('#sign-up input').val('')
   store.user = response.user
   $('#change-password').removeClass('d-none')
   $('#sign-out').removeClass('d-none')
@@ -89,6 +90,7 @@ const signOutSuccess = (response) => {
   $('#show-card').addClass('d-none')
   $('#delete-card').addClass('d-none')
   $('.content').addClass('d-none')
+  $('#sign-up input').val('')
 }
 
 const signOutFail = (response) => {
