@@ -1,10 +1,10 @@
 # General Assembly WDI Project 2: Full Stack Application
 
-![Magic: the Gathering]
+[Magic: the Gathering]
 
 ### Thought Process, Entity Relationship Diagram
 
-![ERD] https://www.lucidchart.com/invitations/accept/ad003043-7c2c-4ba7-92e2-1f8b61e8522a
+[ERD] https://www.lucidchart.com/invitations/accept/ad003043-7c2c-4ba7-92e2-1f8b61e8522a
 
 For the 2nd General Assembly project I focused on simple object oriented development.
 
@@ -17,8 +17,8 @@ If a data object that was being passed through the different functions was incor
 
 I wanted as simple of a design to focus on getting all authentication functionality completed.
 
-![Wireframe] https://i.imgur.com/wxuHCdl.jpg
-![Wireframe] https://i.imgur.com/RxyVIl9.png
+[Wireframe] https://i.imgur.com/wxuHCdl.jpg
+[Wireframe] https://i.imgur.com/RxyVIl9.png
 
 MTG Trading User Stories
 
