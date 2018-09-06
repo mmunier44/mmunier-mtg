@@ -119,7 +119,6 @@ const onUpdateCard = (event) => {
   console.log('data check', data)
   console.log('data.card', data.card)
   console.log(data)
-  delete store.cardId
   api.updateCard(data)
     .then(ui.updateCardSuccess)
     .catch(ui.updateCardFail)

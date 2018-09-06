@@ -46,6 +46,7 @@ const signInSuccess = (response) => {
   $('#show-card').removeClass('d-none')
   $('#delete-card').removeClass('d-none')
   $('.content').removeClass('d-none')
+  $('.content').empty()
   console.log('store.user', store.user)
   // console.log('data.user', data.user)
 }
@@ -91,7 +92,7 @@ const signOutSuccess = (response) => {
   $('#update-card').addClass('d-none')
   $('#show-card').addClass('d-none')
   $('#delete-card').addClass('d-none')
-  $('.content').addClass('d-none')
+  $('.content').empty()
   $('#sign-up input').val('')
 }
 
@@ -154,6 +155,7 @@ const newCardSuccess = (response) => {
   console.log('response', response)
   console.log(response.card)
   $('#create-card input').val('')
+  $('.content').empty()
 }
 
 const newCardFail = () => {
@@ -162,6 +164,7 @@ const newCardFail = () => {
   $('#message').addClass('fail')
   console.log('newCardFail ran')
   console.log('create card failed')
+  $('.content').empty()
   // $('#create-card input').val('')
 }
 
@@ -172,6 +175,7 @@ const updateCardSuccess = (response) => {
   $('#message').addClass('success')
   console.log('updatecardsuccess', response)
   $('#update-card input').val('')
+  $('.content').empty()
 }
 
 const updateCardFail = () => {
@@ -182,6 +186,7 @@ const updateCardFail = () => {
   $('#update-card input').val('')
   $('#message').text('Card does not update, or you did not create it')
   console.log('updateCardFail ran')
+  $('.content').empty()
 }
 
 const deleteCardSuccess = (response) => {
@@ -192,6 +197,7 @@ const deleteCardSuccess = (response) => {
   // $('#message').removeClass()
   // $('#message').addClass('success')
   console.log('deleteCardSuccess', response)
+  $('.content').empty()
 }
 
 const deleteCardFail = (response) => {
@@ -202,6 +208,7 @@ const deleteCardFail = (response) => {
   // $('#message').addClass('success')
   console.log('deleteCardFail', response)
   $('#message').text('Card does not exist or you did not create the card')
+  $('.content').empty()
 }
 
 const clearCards = () => {
