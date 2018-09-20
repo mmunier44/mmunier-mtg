@@ -26,7 +26,7 @@ const signUpFail = function () {
 }
 
 const signInSuccess = (response) => {
-  // $('#message').text('Successful Sign In')
+  $('#message').text('Successful Sign In Signing you In')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-in input').val('')
