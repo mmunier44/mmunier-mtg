@@ -71,7 +71,7 @@ const passwordChangeFail = (response) => {
   $('#message').removeClass()
   $('#message').addClass('fail')
   $('#change-password input').val('')
-  $('#change-password').addClass('d-none')
+  // $('#change-password').addClass('d-none')
 }
 
 const signOutSuccess = (response) => {
