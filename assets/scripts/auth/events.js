@@ -63,6 +63,7 @@ const onSignOut = function (event) {
   $('#message').text('Sign Out Successful')
   event.preventDefault()
   const data = getFormFields(event.target)
+  $('#message').val('')
 
   api.signOut(data)
     .then(ui.signOutSuccess)
