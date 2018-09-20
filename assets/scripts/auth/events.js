@@ -15,6 +15,7 @@ const onSignUp = function (event) {
     .then(onSignUpIn)
     .catch(ui.signUpFail)
 }
+
 // Note Datawithout PC being drawn from store.credentials
 const onSignUpIn = function (event) {
   delete store.credentials.password_confirmation
@@ -49,13 +50,13 @@ const onSignIn = function (event) {
 }
 
 const onPasswordChange = function (event) {
-  $('#message').text('Password Changed')
+  // $('#message').text('Password Changed')
   event.preventDefault()
   const data = getFormFields(event.target)
 
   api.passwordChange(data)
     .then(ui.passwordChangeSuccess)
-    .catch(ui.passwordChangeInFail)
+    .catch(ui.passwordChangeFail)
 }
 
 const onSignOut = function (event) {
