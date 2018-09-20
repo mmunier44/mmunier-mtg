@@ -12,7 +12,7 @@ const showCardTemplate =
 require('../templates/card-listing.handlebars')
 
 const signUpSuccess = (data) => {
-  $('#message').text('Successful Signup')
+  $('#message').text('Successful Signup Signing you in')
   $('#message').removeClass()
   $('#sign-up input').val('')
   $('#sign-up').addClass('d-none')
@@ -26,7 +26,7 @@ const signUpFail = function () {
 }
 
 const signInSuccess = (response) => {
-  $('#message').text('Successful Sign In')
+  // $('#message').text('Successful Sign In')
   $('#message').removeClass()
   $('#message').addClass('success')
   $('#sign-in input').val('')
