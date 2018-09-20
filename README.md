@@ -2,9 +2,17 @@
 
 [Magic: the Gathering]
 
+### List of Technologies Used: Javascript, Ajax, Bootstrap 4 & Handlebars
+
 ### Thought Process, Entity Relationship Diagram
 
 [ERD] https://www.lucidchart.com/invitations/accept/ad003043-7c2c-4ba7-92e2-1f8b61e8522a
+
+Link to deployed Heroku Back End
+https://mmunier44.github.io/mmunier-mtg/
+
+Link to Ruby Back-End repo
+https://github.com/mmunier44/mmunier-rails-api
 
 For the 2nd General Assembly project I focused on simple object oriented development.
 
