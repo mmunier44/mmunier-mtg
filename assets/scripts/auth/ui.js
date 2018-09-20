@@ -66,7 +66,7 @@ const passwordChangeSuccess = (response) => {
   $('#change-password').addClass('d-none')
 }
 
-const passwordChangeFail = function (response) {
+const passwordChangeFail = (response) => {
   $('#message').text('Password Change Failed')
   $('#message').removeClass()
   $('#message').addClass('fail')
