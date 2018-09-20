@@ -95,6 +95,7 @@ const signOutSuccess = (response) => {
   $('#delete-card').addClass('d-none')
   $('.content').empty()
   $('#sign-up input').val('')
+  $('#message').val('')
 }
 
 const signOutFail = (response) => {

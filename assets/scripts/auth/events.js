@@ -7,7 +7,7 @@ const getFormFields = require('../../../lib/get-form-fields.js')
 
 // Note login credentials being stored
 const onSignUp = function (event) {
-  $('#message').text('Sign Up Successful')
+  // $('#message').text('Sign Up Successful')
   event.preventDefault()
   const data = getFormFields(event.target)
   store.credentials = data
@@ -40,7 +40,7 @@ const onSignUpIn = function (event) {
 // }
 
 const onSignIn = function (event) {
-  $('#message').text('Sign In Successful')
+  // $('#message').text('Sign In Successful')
   event.preventDefault()
   const data = getFormFields(event.target)
 
