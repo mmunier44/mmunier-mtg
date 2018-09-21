@@ -9,7 +9,7 @@
 [ERD] https://www.lucidchart.com/invitations/accept/ad003043-7c2c-4ba7-92e2-1f8b61e8522a
 
 Link to deployed Heroku Back End
-https://mmunier44.github.io/mmunier-mtg/
+https://pure-waters.herokuapp.com/
 
 Link to Ruby Back-End repo
 https://github.com/mmunier44/mmunier-rails-api
