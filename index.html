@@ -32,8 +32,10 @@
       <fieldset>
         <legend>Create Card</legend>
         <!-- <input type="text" name="card" placeholder="card"> -->
-        <input type="text" name="card[name]" placeholder="card name">
-        <input type="text" name="card[description]" placeholder="card description">
+        <input type="text" name="card[name]"
+        pattern="[a-zA-Z0-9-\s]+" placeholder="card name" required>
+        <input type="text" name="card[description]"
+        patter="[a-zA-Z0-9-\s]+" placeholder="card description" required>
         <button type="submit" class='btn btn-secondary'>Create Card</button>
       </fieldset>
     </form>

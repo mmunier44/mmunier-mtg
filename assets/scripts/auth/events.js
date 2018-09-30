@@ -167,8 +167,8 @@ const onDeleteCardHandlebar = (event) => {
   event.preventDefault()
   console.log(event)
   console.log(event.target)
-  const cardId = getFormFields(event.target).cardId
-  // const cardId = $(event.target).closest('section').card('id')
+  // const cardId = getFormFields(event.target).cardId
+  const cardId = $(event.target).closest('section').card('id')
   // if (confirm('Are you sure you want to delete this card?')) {
   console.log(cardId)
   api.deleteCard(cardId)
