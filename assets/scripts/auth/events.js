@@ -189,7 +189,7 @@ const addHandlers = () => {
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onGetCardHandlebar)
   $('#update-card').on('submit', onUpdateCard)
-  $('#delete-card').on('submit', onDeleteCard)
+  $('#delete-card').on('submit', onDeleteCardHandlebar)
 }
 
 module.exports = {

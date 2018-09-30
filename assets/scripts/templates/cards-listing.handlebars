@@ -12,8 +12,21 @@
       <p> id {{card.id}}</p>
       <p> name {{card.name}}</p>
       <p> description {{card.description}}
-      <br>
-      <!-- <button type="submit" class="btn btn-danger btn-sm">Delete</button> -->
+      <div class ="card-footer">
+        <button Type="button" class="delete-card btn btn-light">Delete Card</button>
+        <button class="update-card btn btn-light" type="button"
+        data-toggle="collapse{{card.id}}">Update Card</button>
+        <div class="collapse landpage col-12 flex-row-reverse"
+        id="collapse{{card.id}}".
+        <form id="{{card.id}}">
+          <input type = "text" pattern="[a-zA-Z0-9-\s]+"
+          name="update[name]" placeholder="{{card.name}}">
+          <input type = "text" pattern="[a-zA-Z0-9-\s]+"
+          name="update[description]" placeholder = "{{card.description}}">
+          <button type="submit" class="btn btn-success">Update Card</button>
+        </form>
+      </div>
+
     </section>
   </div>
 </div>
