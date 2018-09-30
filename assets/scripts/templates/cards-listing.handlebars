@@ -14,8 +14,10 @@
       <p> description {{card.description}}
       <div class ="card-footer">
         <button Type="button" class="delete-card btn btn-light">Delete Card</button>
-        <button class="update-card btn btn-light" type="button"
-        data-toggle="collapse{{card.id}}">Update Card</button>
+        <button class="update-card btn btn-light" type="button" data-toggle="collapse"
+        data-target="#collapse{{card.id}}"
+        aria-expanded="false"
+        aria-controls="collapse{{card.id}}">Update Card</button>
         <div class="collapse landpage col-12 flex-row-reverse"
         id="collapse{{card.id}}".
         <form id="{{card.id}}">
