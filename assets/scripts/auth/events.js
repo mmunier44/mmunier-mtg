@@ -128,8 +128,10 @@ const onUpdateCard = (event) => {
 
 const onDeleteCard = (event) => {
   event.preventDefault()
-  const cardId = getFormFields(event.target).cardId
-  // $(event.target).closest('section').data('id')
+  // const cardId = getFormFields(event.target).cardId
+  const cardId =
+  $(event.target).closest('section').data('id')
+  console.log(cardId)
   // if (confirm('Are you sure you want to delete this card?')) {
   api.deleteCard(cardId)
     // .then(() => onGetCards(event))
@@ -167,12 +169,11 @@ const onDeleteCardHandlebar = (event) => {
   console.log(event.target)
   const cardId = getFormFields(event.target).cardId
   // const cardId = $(event.target).closest('section').card('id')
-  if (confirm('Are you sure you want to delete this card?')) {
-    console.log(cardId)
-    api.deleteCard(cardId)
-      .then(() => onGetCardsHandlebar(event))
-      .catch(ui.failure)
-  }
+  // if (confirm('Are you sure you want to delete this card?')) {
+  console.log(cardId)
+  api.deleteCard(cardId)
+    .then(() => onGetCardsHandlebar(event))
+    .catch(ui.failure)
 }
 
 const addHandlers = () => {
@@ -181,7 +182,7 @@ const addHandlers = () => {
   $('#api-index').on('submit', onApiIndex)
   $('#clearCardsButton').on('click', onClearCards)
   // $('#create-card').on('click', onNewCard)
-  $('.content').on('click', 'button', onDeleteCardHandlebar)
+  // $('.content').on('click', 'button', onDeleteCardHandlebar)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
@@ -190,7 +191,7 @@ const addHandlers = () => {
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onGetCardHandlebar)
   $('#update-card').on('submit', onUpdateCard)
-  $('#delete-card').on('submit', onDeleteCardHandlebar)
+  $('#delete-card').on('click', onDeleteCard)
 }
 
 module.exports = {

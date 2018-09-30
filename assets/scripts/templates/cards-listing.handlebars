@@ -5,15 +5,15 @@
   Don't uncomment yet -->
 <div class="card-columns column-count: 3">
   <!-- <div class="col-sm-6"> -->
-  <div class ="card text-white bg-primary mb-3" style="width: 18rem;">
+  <div class ="card text-white bg-primary mb-3" style="width: 30rem;">
     <!-- <h1 data-id="{{card.id}}"> <small>Name: {{card.name}}</small></h1> -->
     <div class ="card-body">
     <section data-id="{{card.id}}">
       <p> id {{card.id}}</p>
       <p> name {{card.name}}</p>
-      <p> description {{card.description}}
+      <p> description {{card.description}}</p>
       <div class ="card-footer">
-        <button Type="button" class="delete-card btn btn-light">Delete Card</button>
+        <button Type="button" id="delete-card" class="delete-card btn btn-light">Delete Card</button>
         <button class="update-card btn btn-light" type="button" data-toggle="collapse"
         data-target="#collapse{{card.id}}"
         aria-expanded="false"
@@ -22,10 +22,11 @@
         id="collapse{{card.id}}".
         <form id="{{card.id}}">
           <input type = "text" pattern="[a-zA-Z0-9-\s]+"
-          name="update[name]" placeholder="{{card.name}}">
+          name="update[name]" placeholder="{{card.id}}">
           <input type = "text" pattern="[a-zA-Z0-9-\s]+"
           name="update[description]" placeholder = "{{card.description}}">
-          <button type="submit" class="btn btn-success">Update Card</button>
+          <br>
+          <button type="submit" class="btn btn-success">Submit</button>
         </form>
       </div>
 
