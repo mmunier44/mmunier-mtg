@@ -192,6 +192,7 @@ const updateCardFail = () => {
 }
 
 const deleteCardSuccess = (response) => {
+  console.log(event)
   console.log(response)
   $('#delete-card input').val('')
   $('#message').text('Card has been deleted')
@@ -203,6 +204,7 @@ const deleteCardSuccess = (response) => {
 }
 
 const deleteCardFail = (response) => {
+  console.log(event)
   console.log(response)
   $('#delete-card input').val('')
   // $('#message').text('Update Card Success')
@@ -215,6 +217,7 @@ const deleteCardFail = (response) => {
 
 const clearCards = () => {
   console.log(event)
+  $('#message').text('Cards Cleared!')
   $('.content').empty()
 }
 

@@ -128,10 +128,12 @@ const onUpdateCard = (event) => {
 
 const onDeleteCard = (event) => {
   event.preventDefault()
+  console.log(event)
   // const cardId = getFormFields(event.target).cardId
   const cardId =
   $(event.target).closest('section').data('id')
-  console.log(cardId)
+  // console.log(data)
+  // const cardId = data
   // if (confirm('Are you sure you want to delete this card?')) {
   api.deleteCard(cardId)
     // .then(() => onGetCards(event))
@@ -190,7 +192,7 @@ const addHandlers = () => {
   // $('#list-cards').on('submit', onListCards)
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onGetCardHandlebar)
-  $('#update-card').on('submit', onUpdateCard)
+  $('#update-card').on('click', onUpdateCard)
   $('#delete-card').on('click', onDeleteCard)
 }
 
