@@ -112,34 +112,6 @@ const onNewCard = (event) => {
     .catch(ui.newCardFail)
 }
 
-const onUpdateCard = (event) => {
-  event.preventDefault()
-  console.log('event logged', event)
-  const data = getFormFields(event.target)
-  console.log('store.cardId', store.cardId)
-  console.log('store check', store)
-  console.log('data check', data)
-  console.log('data.card', data.card)
-  console.log(data)
-  api.updateCard(data)
-    .then(ui.updateCardSuccess)
-    .catch(ui.updateCardFail)
-}
-
-const onDeleteCard = (event) => {
-  event.preventDefault()
-  console.log(event)
-  // const cardId = getFormFields(event.target).cardId
-  const cardId =
-  $(event.target).closest('section').data('id')
-  // console.log(data)
-  // const cardId = data
-  // if (confirm('Are you sure you want to delete this card?')) {
-  api.deleteCard(cardId)
-    // .then(() => onGetCards(event))
-    .then(ui.deleteCardSuccess)
-    .catch(ui.deleteCardFail)
-}
 // }
 
 const onGetCardsHandlebar = (event) => {
@@ -178,6 +150,35 @@ const onDeleteCardHandlebar = (event) => {
     .catch(ui.failure)
 }
 
+const onUpdateCard = (event) => {
+  event.preventDefault()
+  console.log('event logged', event)
+  const data = getFormFields(event.target)
+  console.log('store.cardId', store.cardId)
+  console.log('store check', store)
+  console.log('data check', data)
+  console.log('data.card', data.card)
+  console.log(data)
+  api.updateCard(data)
+    .then(ui.updateCardSuccess)
+    .catch(ui.updateCardFail)
+}
+
+const onDeleteCard = (event) => {
+  event.preventDefault()
+  console.log(event)
+  // const cardId = getFormFields(event.target).cardId
+  const cardId =
+  $(event.target).closest('section').data('id')
+  // console.log(data)
+  // const cardId = data
+  // if (confirm('Are you sure you want to delete this card?')) {
+  api.deleteCard(cardId)
+    // .then(() => onGetCards(event))
+    .then(ui.deleteCardSuccess)
+    .catch(ui.deleteCardFail)
+}
+
 const addHandlers = () => {
   $('#getCardsButton').on('click', onGetCardsHandlebar)
   // $('#show-card').on('click', onShowCard)
@@ -193,7 +194,7 @@ const addHandlers = () => {
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onGetCardHandlebar)
   $('#update-card').on('click', onUpdateCard)
-  $('#delete-card').on('click', onDeleteCard)
+  // $('#content').on('click', onDeleteCard)
 }
 
 module.exports = {

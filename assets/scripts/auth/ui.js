@@ -200,7 +200,7 @@ const deleteCardSuccess = (response) => {
   // $('#message').removeClass()
   // $('#message').addClass('success')
   console.log('deleteCardSuccess', response)
-  $('.content').empty()
+  // $('.content').empty()
 }
 
 const deleteCardFail = (response) => {
@@ -212,7 +212,7 @@ const deleteCardFail = (response) => {
   // $('#message').addClass('success')
   console.log('deleteCardFail', response)
   $('#message').text('Card does not exist or you did not create the card')
-  $('.content').empty()
+  // $('.content').empty()
 }
 
 const clearCards = () => {
