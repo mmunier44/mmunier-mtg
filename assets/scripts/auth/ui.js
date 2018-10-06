@@ -192,6 +192,7 @@ const updateCardFail = () => {
 }
 
 const deleteCardSuccess = (response) => {
+  console.log(event)
   console.log(response)
   $('#delete-card input').val('')
   $('#message').text('Card has been deleted')
@@ -199,10 +200,11 @@ const deleteCardSuccess = (response) => {
   // $('#message').removeClass()
   // $('#message').addClass('success')
   console.log('deleteCardSuccess', response)
-  $('.content').empty()
+  // $('.content').empty()
 }
 
 const deleteCardFail = (response) => {
+  console.log(event)
   console.log(response)
   $('#delete-card input').val('')
   // $('#message').text('Update Card Success')
@@ -210,11 +212,12 @@ const deleteCardFail = (response) => {
   // $('#message').addClass('success')
   console.log('deleteCardFail', response)
   $('#message').text('Card does not exist or you did not create the card')
-  $('.content').empty()
+  // $('.content').empty()
 }
 
 const clearCards = () => {
   console.log(event)
+  $('#message').text('Cards Cleared!')
   $('.content').empty()
 }
 

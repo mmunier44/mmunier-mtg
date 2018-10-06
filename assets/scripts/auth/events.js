@@ -112,30 +112,6 @@ const onNewCard = (event) => {
     .catch(ui.newCardFail)
 }
 
-const onUpdateCard = (event) => {
-  event.preventDefault()
-  console.log('event logged', event)
-  const data = getFormFields(event.target)
-  console.log('store.cardId', store.cardId)
-  console.log('store check', store)
-  console.log('data check', data)
-  console.log('data.card', data.card)
-  console.log(data)
-  api.updateCard(data)
-    .then(ui.updateCardSuccess)
-    .catch(ui.updateCardFail)
-}
-
-const onDeleteCard = (event) => {
-  event.preventDefault()
-  const cardId = getFormFields(event.target).cardId
-  // $(event.target).closest('section').data('id')
-  // if (confirm('Are you sure you want to delete this card?')) {
-  api.deleteCard(cardId)
-    // .then(() => onGetCards(event))
-    .then(ui.deleteCardSuccess)
-    .catch(ui.deleteCardFail)
-}
 // }
 
 const onGetCardsHandlebar = (event) => {
@@ -165,13 +141,42 @@ const onDeleteCardHandlebar = (event) => {
   event.preventDefault()
   console.log(event)
   console.log(event.target)
+  // const cardId = getFormFields(event.target).cardId
   const cardId = $(event.target).closest('section').card('id')
-  if (confirm('Are you sure you want to delete this card?')) {
-    console.log(cardId)
-    api.deleteCard(cardId)
-      .then(() => onGetCardsHandlebar(event))
-      .catch(ui.failure)
-  }
+  // if (confirm('Are you sure you want to delete this card?')) {
+  console.log(cardId)
+  api.deleteCard(cardId)
+    .then(() => onGetCardsHandlebar(event))
+    .catch(ui.failure)
+}
+
+const onUpdateCard = (event) => {
+  event.preventDefault()
+  console.log('event logged', event)
+  const data = getFormFields(event.target)
+  console.log('store.cardId', store.cardId)
+  console.log('store check', store)
+  console.log('data check', data)
+  console.log('data.card', data.card)
+  console.log(data)
+  api.updateCard(data)
+    .then(ui.updateCardSuccess)
+    .catch(ui.updateCardFail)
+}
+
+const onDeleteCard = (event) => {
+  event.preventDefault()
+  console.log(event)
+  // const cardId = getFormFields(event.target).cardId
+  const cardId =
+  $(event.target).closest('section').data('id')
+  // console.log(data)
+  // const cardId = data
+  // if (confirm('Are you sure you want to delete this card?')) {
+  api.deleteCard(cardId)
+    // .then(() => onGetCards(event))
+    .then(ui.deleteCardSuccess)
+    .catch(ui.deleteCardFail)
 }
 
 const addHandlers = () => {
@@ -180,7 +185,7 @@ const addHandlers = () => {
   $('#api-index').on('submit', onApiIndex)
   $('#clearCardsButton').on('click', onClearCards)
   // $('#create-card').on('click', onNewCard)
-  $('.content').on('click', 'button', onDeleteCardHandlebar)
+  // $('.content').on('click', 'button', onDeleteCardHandlebar)
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onPasswordChange)
@@ -188,8 +193,8 @@ const addHandlers = () => {
   // $('#list-cards').on('submit', onListCards)
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onGetCardHandlebar)
-  $('#update-card').on('submit', onUpdateCard)
-  $('#delete-card').on('submit', onDeleteCard)
+  $('#update-card').on('click', onUpdateCard)
+  // $('#content').on('click', onDeleteCard)
 }
 
 module.exports = {
