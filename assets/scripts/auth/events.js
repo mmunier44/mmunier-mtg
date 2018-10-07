@@ -137,19 +137,6 @@ const onClearCards = (event) => {
   ui.clearCards()
 }
 
-const onDeleteCardHandlebar = (event) => {
-  event.preventDefault()
-  console.log(event)
-  console.log(event.target)
-  // const cardId = getFormFields(event.target).cardId
-  const cardId = $(event.target).closest('section').card('id')
-  // if (confirm('Are you sure you want to delete this card?')) {
-  console.log(cardId)
-  api.deleteCard(cardId)
-    .then(() => onGetCardsHandlebar(event))
-    .catch(ui.failure)
-}
-
 const onUpdateCard = (event) => {
   event.preventDefault()
   console.log('event logged', event)
@@ -193,8 +180,8 @@ const addHandlers = () => {
   // $('#list-cards').on('submit', onListCards)
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onGetCardHandlebar)
-  $('#update-card').on('click', onUpdateCard)
-  // $('#content').on('click', onDeleteCard)
+  $('#update-card').on('submit', onUpdateCard)
+  $('#content').on('click', 'button.delete', onDeleteCard)
 }
 
 module.exports = {
@@ -211,6 +198,6 @@ module.exports = {
   onDeleteCard,
   onGetCardsHandlebar,
   onClearCards,
-  onGetCardHandlebar,
-  onDeleteCardHandlebar
+  onGetCardHandlebar
+  // onDeleteCardHandlebar
 }
