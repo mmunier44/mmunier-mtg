@@ -180,7 +180,7 @@ const addHandlers = () => {
   // $('#list-cards').on('submit', onListCards)
   $('#create-card').on('submit', onNewCard)
   $('#show-card').on('submit', onGetCardHandlebar)
-  $('#content').on('submit', onUpdateCard)
+  $('#update-card').on('submit', onUpdateCard)
   $('#content').on('click', 'button.delete', onDeleteCard)
 }
 
