@@ -3,11 +3,15 @@
 {{#each cards as |card|}}
   <!-- {{> partial}}
   Don't uncomment yet -->
-<div class="card-columns column-count: 3">
+<div class="card col-md-6 col-sm-6 text-center">
+<!-- <div class="card-columns column-count: 2"> -->
   <!-- <div class="col-sm-6"> -->
-  <div class ="card text-white bg-primary mb-3" style="width: 30rem;">
+  <div class ="card text-white bg-primary">
+    <div class="card-header heading-footer"></div>
+    <div class="card-block text-center">
+      <img class="panel-profile-img" src="https://i.imgur.com/a51ntEF.jpg">
     <!-- <h1 data-id="{{card.id}}"> <small>Name: {{card.name}}</small></h1> -->
-    <div class ="card-body">
+    <!-- <div class ="card-body"> -->
     <section data-id="{{card.id}}">
       <p> id {{card.id}}</p>
       <p> name {{card.name}}</p>
@@ -32,7 +36,6 @@
 
     </section>
   </div>
-</div>
 </div>
 </div>
 

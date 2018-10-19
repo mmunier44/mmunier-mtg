@@ -5,7 +5,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import 'theme';
 
 $black: #000;
-$red: rgb(240, 128, 128);
+$red: #4B5A68;
+
 
 .footer {
   background-color: $red;
@@ -21,6 +22,26 @@ $red: rgb(240, 128, 128);
   text-align: auto;
   width: 50%;
 }
+
+.heading-footer
+{
+// background-image: url(https://i.imgur.com/a51ntEF.jpg);
+background-size: cover;
+height: 50px;
+-webkit-box-shadow: none;
+box-shadow: none;
+border: 5px;
+border-radius: 5px;
+}
+
+// .panel-profile-img
+// {
+// max-width: 250px;
+// margin-top: -160px;
+// margin-bottom: 5px;
+// border: 3px solid #fff;
+// border-radius: 0%;
+// }
 
 .header {
   height: 50%;
